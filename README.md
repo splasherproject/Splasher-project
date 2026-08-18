@@ -3,7 +3,7 @@
 <br>
 
 
-GUI and CLI Launcher built on top of [Project Reboot](https://github.com/Milxnor/Project-Reboot-3.0/)
+GUI and CLI Launcher built on top of [Project Reboot](https://github.com/splasherproject/Splasher-project)
 
 Join our [Discord](https://discord.gg/Gu96DpVPG8)
 
