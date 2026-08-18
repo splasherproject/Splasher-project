@@ -1,12 +1,12 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/message/profile.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/message/profile.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/page/pages.dart';
 
 class ProfileWidget extends StatefulWidget {
   final GlobalKey<OverlayTargetState> overlayKey;
@@ -113,6 +113,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     return "$username@projectreboot.dev".toLowerCase();
   }
 
-  TextEditingController get _username => pageIndex.value == RebootPageType.host.index ? _hostingController.accountUsername : _gameController.username;
-  TextEditingController get _password => pageIndex.value == RebootPageType.host.index ? _hostingController.accountPassword : _gameController.password;
+  TextEditingController get _username => pageIndex.value == SplasherPageType.host.index ? _hostingController.accountUsername : _gameController.username;
+  TextEditingController get _password => pageIndex.value == SplasherPageType.host.index ? _hostingController.accountPassword : _gameController.password;
 }

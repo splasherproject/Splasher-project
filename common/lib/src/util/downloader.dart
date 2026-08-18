@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:archive/archive_io.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';

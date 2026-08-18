@@ -4,7 +4,7 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:typed_data';
 import 'package:ffi/ffi.dart';
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 import 'package:win32/win32.dart';
 import 'package:path/path.dart' as path;
 

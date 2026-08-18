@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:ini/ini.dart';
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_proxy/shelf_proxy.dart';

@@ -1,25 +1,25 @@
-![Banner](https://i.imgur.com/p0P4tcI.png)
+# Splasher
 
-GUI and CLI Launcher for [Project Reboot](https://github.com/Milxnor/Project-Reboot-3.0/)
+GUI and CLI Launcher built on top of [Project Reboot](https://github.com/Milxnor/Project-Reboot-3.0/)
 
-Join our [Discord](https://discord.gg/rebootmp)
+Join our Discord (TODO: add your invite link)
 
-Install the launcher easily from the [releases](https://github.com/Auties00/Reboot-Launcher/releases/) section
+Install the launcher easily from the [releases](https://github.com/YOUR_ORG/splasher/releases/) section
 
 ## Modules
 
 - COMMON: Shared business logic for CLI and GUI modules
-  
+
 - CLI: Work in progress command line interface to host a Fortnite Server on a Windows VPS easily, developed in Dart
-  
+
 - GUI: Stable graphical user interface to play and host Fortnite S0-14
 
-## Preview 
+## Preview
 
 - GUI
-  
-![Registrazione 2025-03-24 194421](https://github.com/user-attachments/assets/f3452969-76ba-49e7-b707-42754bacad70)
+
+(TODO: add a screenshot of the new Splasher interface)
 
 - CLI
-  
+
 Coming soon!

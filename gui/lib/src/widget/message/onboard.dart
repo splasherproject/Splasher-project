@@ -1,20 +1,20 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/backend_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/controller/settings_controller.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/message/profile.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/widget/page/backend_page.dart';
-import 'package:reboot_launcher/src/widget/page/home_page.dart';
-import 'package:reboot_launcher/src/widget/page/host_page.dart';
-import 'package:reboot_launcher/src/widget/page/play_page.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/version/version_selector.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/backend_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/controller/settings_controller.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/message/profile.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/widget/page/backend_page.dart';
+import 'package:splasher/src/widget/page/home_page.dart';
+import 'package:splasher/src/widget/page/host_page.dart';
+import 'package:splasher/src/widget/page/play_page.dart';
+import 'package:splasher/src/page/pages.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/version/version_selector.dart';
 
 void startOnboarding() {
   final gameController = Get.find<GameController>();
@@ -36,7 +36,7 @@ void startOnboarding() {
 }
 
 void _promptPlayPage() {
-  pageIndex.value = RebootPageType.play.index;
+  pageIndex.value = SplasherPageType.play.index;
   pageOverlayTargetKey.currentState!.showOverlay(
       text: translations.promptPlayPageText,
       actionBuilder: (context, onClose) => _buildActionButton(
@@ -72,7 +72,7 @@ void _promptPlayVersion() {
 }
 
 void _promptServerBrowserPage() {
-  pageIndex.value = RebootPageType.browser.index;
+  pageIndex.value = SplasherPageType.browser.index;
   pageOverlayTargetKey.currentState!.showOverlay(
       text: translations.promptServerBrowserPageText,
       actionBuilder: (context, onClose) => _buildActionButton(
@@ -87,7 +87,7 @@ void _promptServerBrowserPage() {
 }
 
 void _promptHostAccount() {
-  pageIndex.value = RebootPageType.host.index;
+  pageIndex.value = SplasherPageType.host.index;
   profileOverlayKey.currentState!.showOverlay(
       text: translations.hostAccountText,
       offset: Offset(27.5, 17.5),
@@ -243,7 +243,7 @@ void _promptHostShare() {
 
 
 void _promptBackendPage() {
-  pageIndex.value = RebootPageType.backend.index;
+  pageIndex.value = SplasherPageType.backend.index;
   pageOverlayTargetKey.currentState!.showOverlay(
       text: translations.promptBackendPageText,
       actionBuilder: (context, onClose) => _buildActionButton(
@@ -322,7 +322,7 @@ void _promptBackendDetached() {
 }
 
 void _promptInfoTab() {
-  pageIndex.value = RebootPageType.info.index;
+  pageIndex.value = SplasherPageType.info.index;
   pageOverlayTargetKey.currentState!.showOverlay(
       text: translations.promptInfoTabText,
       actionBuilder: (context, onClose) => _buildActionButton(
@@ -337,7 +337,7 @@ void _promptInfoTab() {
 }
 
 void _promptSettingsTab() {
-  pageIndex.value = RebootPageType.settings.index;
+  pageIndex.value = SplasherPageType.settings.index;
   pageOverlayTargetKey.currentState!.showOverlay(
       text: translations.promptSettingsTabText,
       actionBuilder: (context, onClose) => _buildActionButton(

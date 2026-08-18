@@ -1,18 +1,18 @@
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:reboot_launcher/src/widget/message/onboard.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher/src/widget/message/onboard.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class InfoPage extends RebootPage {
+class InfoPage extends SplasherPage {
   const InfoPage({Key? key}) : super(key: key);
 
   @override
-  RebootPageState<InfoPage> createState() => _InfoPageState();
+  SplasherPageState<InfoPage> createState() => _InfoPageState();
 
   @override
   String get name => translations.infoName;
@@ -24,12 +24,12 @@ class InfoPage extends RebootPage {
   bool hasButton(String? routeName) => false;
 
   @override
-  RebootPageType get type => RebootPageType.info;
+  SplasherPageType get type => SplasherPageType.info;
 }
 
-class _InfoPageState extends RebootPageState<InfoPage> {
-  static const String _kReportBugUrl = "https://github.com/Auties00/reboot_launcher/issues/new"; 
-  static const String _kDiscordInviteUrl = "https://discord.gg/rebootmp";
+class _InfoPageState extends SplasherPageState<InfoPage> {
+  static const String _kReportBugUrl = "https://github.com/YOUR_ORG/splasher/issues/new";
+  static const String _kDiscordInviteUrl = "https://discord.gg/YOUR_INVITE";
   
   @override
   List<SettingTile> get settings => [

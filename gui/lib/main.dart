@@ -3,30 +3,30 @@ import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
-import 'package:flutter_gen/gen_l10n/reboot_localizations.dart';
+import 'package:flutter_gen/gen_l10n/splasher_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:local_notifier/local_notifier.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/backend_controller.dart';
-import 'package:reboot_launcher/src/controller/dll_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/controller/settings_controller.dart';
-import 'package:reboot_launcher/src/widget/message/error.dart';
-import 'package:reboot_launcher/src/widget/page/home_page.dart';
-import 'package:reboot_launcher/src/util/os.dart';
-import 'package:reboot_launcher/src/util/url_protocol.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/backend_controller.dart';
+import 'package:splasher/src/controller/dll_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/controller/settings_controller.dart';
+import 'package:splasher/src/widget/message/error.dart';
+import 'package:splasher/src/widget/page/home_page.dart';
+import 'package:splasher/src/util/os.dart';
+import 'package:splasher/src/util/theme.dart';
+import 'package:splasher/src/util/url_protocol.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:system_theme/system_theme.dart';
 import 'package:version/version.dart';
 import 'package:window_manager/window_manager.dart';
 
 const double kDefaultWindowWidth = 1164;
 const double kDefaultWindowHeight = 864;
-const String kCustomUrlSchema = "Reboot";
+const String kCustomUrlSchema = "Splasher";
 
 Version? appVersion;
 bool appWithNoStorage = false;
@@ -82,7 +82,7 @@ Future<void> _startApp() async {
     errors.add(uncaughtError);
   } finally{
     log("[APP] Started applications with errors: $errors");
-    runApp(RebootApplication(errors: errors));
+    runApp(SplasherApplication(errors: errors));
   }
 }
 
@@ -101,7 +101,7 @@ void _overrideHttpCertificate() {
 Future<Object?> _initNotifications() async {
   try {
     await localNotifier.setup(
-        appName: 'Reboot Launcher',
+        appName: 'Splasher',
         shortcutPolicy: ShortcutPolicy.ignore
     );
     return null;
@@ -152,7 +152,6 @@ Future<Object?> _initUrlHandler() async {
 
 Future<void> _initWindow() async {
   try {
-    await SystemTheme.accentColor.load();
     await windowManager.ensureInitialized();
     await Window.initialize();
     var settingsController = Get.find<SettingsController>();
@@ -195,7 +194,7 @@ Future<List<Object>> _initStorage() async {
     await GetStorage(DllController.storageName, settingsDirectory.path).initStorage;
   }catch(error) {
     appWithNoStorage = true;
-    errors.add("The Reboot Launcher configuration in ${settingsDirectory.path} cannot be accessed: running with in memory storage");
+    errors.add("The Splasher configuration in ${settingsDirectory.path} cannot be accessed: running with in memory storage");
   }
 
   try {
@@ -233,15 +232,15 @@ Future<List<Object>> _initStorage() async {
   return errors;
 }
 
-class RebootApplication extends StatefulWidget {
+class SplasherApplication extends StatefulWidget {
   final List<Object> errors;
-  const RebootApplication({Key? key, required this.errors}) : super(key: key);
+  const SplasherApplication({Key? key, required this.errors}) : super(key: key);
 
   @override
-  State<RebootApplication> createState() => _RebootApplicationState();
+  State<SplasherApplication> createState() => _SplasherApplicationState();
 }
 
-class _RebootApplicationState extends State<RebootApplication> {
+class _SplasherApplicationState extends State<SplasherApplication> {
   final SettingsController _settingsController = Get.find<SettingsController>();
 
   @override
@@ -268,16 +267,9 @@ class _RebootApplicationState extends State<RebootApplication> {
       supportedLocales: AppLocalizations.supportedLocales,
       themeMode: _settingsController.themeMode.value,
       debugShowCheckedModeBanner: false,
-      color: SystemTheme.accentColor.accent.toAccentColor(),
-      darkTheme: _createTheme(Brightness.dark),
-      theme: _createTheme(Brightness.light),
+      color: kSplasherAccentColor,
+      darkTheme: buildSplasherTheme(Brightness.dark),
+      theme: buildSplasherTheme(Brightness.light),
       home: const HomePage()
   ));
-
-  FluentThemeData _createTheme(Brightness brightness) => FluentThemeData(
-      brightness: brightness,
-      accentColor: SystemTheme.accentColor.accent.toAccentColor(),
-      visualDensity: VisualDensity.standard,
-      scaffoldBackgroundColor: Colors.transparent
-  );
 }

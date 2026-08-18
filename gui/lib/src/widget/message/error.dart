@@ -1,8 +1,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/page/pages.dart';
+import 'package:splasher/src/util/translations.dart';
 
 String? lastError;
 
@@ -26,7 +26,7 @@ void onError(Object exception, StackTrace? stackTrace, bool framework) {
     }
   }
 
-  WidgetsBinding.instance.addPostFrameCallback((timeStamp) => showRebootDialog(
+  WidgetsBinding.instance.addPostFrameCallback((timeStamp) => showSplasherDialog(
       builder: (context) =>
           ErrorDialog(
               exception: exception,

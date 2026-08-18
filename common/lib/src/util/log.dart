@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 import 'package:synchronized/extension.dart';
 
 final File launcherLogFile = _createLoggingFile();

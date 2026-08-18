@@ -5,15 +5,15 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:path/path.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/main.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/page/settings_page.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/main.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/page/settings_page.dart';
 import 'package:version/version.dart';
 import 'package:path/path.dart' as path;
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
 
 class DllController extends GetxController {
   static const String storageName = "v3_dll_storage";
@@ -99,7 +99,7 @@ class DllController extends GetxController {
       }
 
       if(!silent) {
-        infoBarEntry = showRebootInfoBar(
+        infoBarEntry = showSplasherInfoBar(
             translations.downloadingDll("reboot"),
             loading: true,
             duration: null
@@ -116,7 +116,7 @@ class DllController extends GetxController {
       ).then((values) => values.reduce((first, second) => first && second));
       if(!result) {
         status.value = UpdateStatus.error;
-        showRebootInfoBar(
+        showSplasherInfoBar(
             translations.downloadDllAntivirus(antiVirusName ?? defaultAntiVirusName, "reboot"),
             duration: infoBarLongDuration,
             severity: InfoBarSeverity.error
@@ -128,7 +128,7 @@ class DllController extends GetxController {
       status.value = UpdateStatus.success;
       infoBarEntry?.close();
       if(!silent) {
-        infoBarEntry = showRebootInfoBar(
+        infoBarEntry = showSplasherInfoBar(
             translations.downloadDllSuccess("reboot"),
             severity: InfoBarSeverity.success,
             duration: infoBarShortDuration
@@ -143,7 +143,7 @@ class DllController extends GetxController {
       error = error.toLowerCase();
       status.value = UpdateStatus.error;
       final completer = Completer<bool>();
-      infoBarEntry = showRebootInfoBar(
+      infoBarEntry = showSplasherInfoBar(
           translations.downloadDllError(error.toString(), "reboot.dll"),
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error,
@@ -237,7 +237,7 @@ class DllController extends GetxController {
       final fileNameWithoutExtension = basenameWithoutExtension(filePath);
       if(!silent) {
         log("[DLL] Showing dialog while downloading $dll...");
-        entry = showRebootInfoBar(
+        entry = showSplasherInfoBar(
             translations.downloadingDll(fileNameWithoutExtension),
             loading: true,
             duration: null
@@ -248,7 +248,7 @@ class DllController extends GetxController {
       final result = await downloadDependency(dll, filePath);
       if(!result) {
         entry?.close();
-        showRebootInfoBar(
+        showSplasherInfoBar(
             translations.downloadDllAntivirus(antiVirusName ?? defaultAntiVirusName, dll.name),
             duration: infoBarLongDuration,
             severity: InfoBarSeverity.error
@@ -259,7 +259,7 @@ class DllController extends GetxController {
       entry?.close();
       if(!silent) {
         log("[DLL] Showing success dialog for $dll");
-        entry = await showRebootInfoBar(
+        entry = await showSplasherInfoBar(
             translations.downloadDllSuccess(fileNameWithoutExtension),
             severity: InfoBarSeverity.success,
             duration: infoBarShortDuration
@@ -276,7 +276,7 @@ class DllController extends GetxController {
       error = error.contains(": ") ? error.substring(error.indexOf(": ") + 2) : error;
       error = error.toLowerCase();
       final completer = Completer<bool>();
-      await showRebootInfoBar(
+      await showSplasherInfoBar(
           translations.downloadDllError(error.toString(), dll.name),
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error,
@@ -322,7 +322,7 @@ class DllController extends GetxController {
             .instance
             .value
             ?.kill();
-        showRebootInfoBar(
+        showSplasherInfoBar(
             translations.downloadDllAntivirus(antiVirusName ?? defaultAntiVirusName, injectable.name),
             duration: infoBarLongDuration,
             severity: InfoBarSeverity.error

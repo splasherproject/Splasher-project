@@ -4,13 +4,13 @@ import 'dart:isolate';
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/util/os.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/util/types.dart';
-import 'package:reboot_launcher/src/widget/file/file_selector.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/util/os.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/util/types.dart';
+import 'package:splasher/src/widget/file/file_selector.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:windows_taskbar/windows_taskbar.dart';
 

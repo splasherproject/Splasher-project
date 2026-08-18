@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 
 List<FortniteVersion> readVersions() {
   final file = _versionsFile;

@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
-import 'package:reboot_launcher/main.dart';
-import 'package:reboot_launcher/src/util/os.dart';
+import 'package:splasher/main.dart';
+import 'package:splasher/src/util/os.dart';
 
 typedef FileSelectorValidator = String? Function(String?);
 

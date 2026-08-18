@@ -1,28 +1,28 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:reboot_launcher/src/controller/settings_controller.dart';
-import 'package:reboot_launcher/src/widget/message/onboard.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
+import 'package:splasher/src/controller/settings_controller.dart';
+import 'package:splasher/src/widget/message/onboard.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/translations.dart';
 
-abstract class RebootPage extends StatefulWidget {
-  const RebootPage({super.key});
+abstract class SplasherPage extends StatefulWidget {
+  const SplasherPage({super.key});
 
   String get name;
 
   String get iconAsset;
 
-  RebootPageType get type;
+  SplasherPageType get type;
 
   int get index => type.index;
 
   bool hasButton(String? pageName);
 
   @override
-  RebootPageState createState();
+  SplasherPageState createState();
 }
 
-abstract class RebootPageState<T extends RebootPage> extends State<T> with AutomaticKeepAliveClientMixin<T> {
+abstract class SplasherPageState<T extends SplasherPage> extends State<T> with AutomaticKeepAliveClientMixin<T> {
   final SettingsController _settingsController = Get.find<SettingsController>();
 
   @override

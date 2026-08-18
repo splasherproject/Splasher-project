@@ -2,15 +2,15 @@ import 'package:email_validator/email_validator.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' show Icons;
 import 'package:get/get.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/util/translations.dart';
 
 Future<bool> showProfileForm(BuildContext context, TextEditingController username, TextEditingController password) async{
   final showPassword = RxBool(false);
   final oldUsername = username.text;
   final showPasswordTrailing = RxBool(oldUsername.isNotEmpty);
   final oldPassword = password.text;
-  final result = await showRebootDialog<bool?>(
+  final result = await showSplasherDialog<bool?>(
       builder: (context) => Obx(() => FormDialog(
           content: Column(
             mainAxisSize: MainAxisSize.min,

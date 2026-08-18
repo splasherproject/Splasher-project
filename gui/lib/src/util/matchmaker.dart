@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 
 const Duration _timeout = Duration(seconds: 5);
 

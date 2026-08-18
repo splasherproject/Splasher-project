@@ -8,15 +8,15 @@ import 'package:get/get.dart';
 import 'package:local_notifier/local_notifier.dart';
 import 'package:path/path.dart';
 import 'package:port_forwarder/port_forwarder.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/backend_controller.dart';
-import 'package:reboot_launcher/src/controller/dll_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/util/matchmaker.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/backend_controller.dart';
+import 'package:splasher/src/controller/dll_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/util/matchmaker.dart';
+import 'package:splasher/src/util/translations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:version/version.dart';
@@ -33,7 +33,7 @@ class LaunchButton extends StatefulWidget {
 }
 
 class _LaunchButtonState extends State<LaunchButton> {
-  static const Duration _kRebootDelay = Duration(seconds: 10);
+  static const Duration _kSplasherDelay = Duration(seconds: 10);
 
   final GameController _gameController = Get.find<GameController>();
   final HostingController _hostingController = Get.find<HostingController>();
@@ -192,7 +192,7 @@ class _LaunchButtonState extends State<LaunchButton> {
       return false;
     }
 
-    final result = await showRebootDialog<bool>(
+    final result = await showSplasherDialog<bool>(
         builder: (context) => InfoDialog(
           text: translations.automaticGameServerDialogContent,
           buttons: [
@@ -370,10 +370,10 @@ class _LaunchButtonState extends State<LaunchButton> {
     if(_hostingController.autoRestart.value) {
       final notification = LocalNotification(
         title: translations.gameServerEnd,
-        body: translations.gameServerRestart(_kRebootDelay.inSeconds),
+        body: translations.gameServerRestart(_kSplasherDelay.inSeconds),
       );
       notification.show();
-      Future.delayed(_kRebootDelay).then((_) async {
+      Future.delayed(_kSplasherDelay).then((_) async {
         log("[RESTARTER] Stopping server...");
         await _onStop(
             reason: _StopReason.normal,
@@ -389,10 +389,10 @@ class _LaunchButtonState extends State<LaunchButton> {
     }else {
       final notification = LocalNotification(
           title: translations.gameServerEnd,
-          body: translations.gameServerShutdown(_kRebootDelay.inSeconds)
+          body: translations.gameServerShutdown(_kSplasherDelay.inSeconds)
       );
       notification.show();
-      Future.delayed(_kRebootDelay).then((_) {
+      Future.delayed(_kSplasherDelay).then((_) {
         log("[RESTARTER] Stopping server...");
         _onStop(
             reason: _StopReason.normal,
@@ -435,7 +435,7 @@ class _LaunchButtonState extends State<LaunchButton> {
 
   void _onGameClientInjected() {
     _gameClientInfoBar?.close();
-    showRebootInfoBar(
+    showSplasherInfoBar(
         translations.gameClientStarted,
         severity: InfoBarSeverity.success,
         duration: infoBarLongDuration
@@ -454,7 +454,7 @@ class _LaunchButtonState extends State<LaunchButton> {
       final started = await _checkLocalGameServer(gameServerPort);
       if(!started) {
         if (_hostingController.instance.value?.killed != true) {
-          showRebootInfoBar(
+          showSplasherInfoBar(
               translations.gameServerStartWarning,
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration
@@ -465,12 +465,12 @@ class _LaunchButtonState extends State<LaunchButton> {
       _backendController.joinLocalhost();
       final accessible = await _checkPublicGameServer(gameServerPort);
       if (!accessible) {
-        showRebootInfoBar(
+        showSplasherInfoBar(
           translations.gameServerStartLocalWarning,
           severity: InfoBarSeverity.warning,
           duration: infoBarLongDuration,
           action: Button(
-            onPressed: () => launchUrlString("https://github.com/Auties00/reboot_launcher/blob/master/documentation/$currentLocale/PortForwarding.md"),
+            onPressed: () => launchUrlString("https://github.com/YOUR_ORG/splasher/blob/master/documentation/$currentLocale/PortForwarding.md"),
             child: Text(translations.checkGameServerFixAction),
           ),
         );
@@ -481,7 +481,7 @@ class _LaunchButtonState extends State<LaunchButton> {
         _hostingController.accountUsername.text,
         _hostingController.instance.value!.version.toString(),
       );
-      showRebootInfoBar(
+      showSplasherInfoBar(
           translations.gameServerStarted,
           severity: InfoBarSeverity.success,
           duration: infoBarLongDuration
@@ -493,7 +493,7 @@ class _LaunchButtonState extends State<LaunchButton> {
 
   Future<bool> _checkLocalGameServer(String gameServerPort) async {
     try {
-      _gameServerInfoBar = showRebootInfoBar(
+      _gameServerInfoBar = showSplasherInfoBar(
           translations.waitingForGameServer,
           loading: true,
           duration: null
@@ -516,7 +516,7 @@ class _LaunchButtonState extends State<LaunchButton> {
 
   Future<bool> _checkPublicGameServer(String gameServerPort) async {
     try {
-      _gameServerInfoBar = showRebootInfoBar(
+      _gameServerInfoBar = showSplasherInfoBar(
           translations.checkingGameServer,
           loading: true,
           duration: null
@@ -542,7 +542,7 @@ class _LaunchButtonState extends State<LaunchButton> {
       final forwarded = await gateway.openPort(
           protocol: PortType.udp,
           externalPort: int.parse(gameServerPort),
-          portDescription: "Reboot Game Server"
+          portDescription: "Splasher Game Server"
       );
       if (!forwarded) {
         _gameServerInfoBar?.close();
@@ -635,21 +635,21 @@ class _LaunchButtonState extends State<LaunchButton> {
         case _StopReason.normal:
           break;
         case _StopReason.missingVersionError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.missingVersionError,
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
           );
           break;
         case _StopReason.missingExecutableError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.missingExecutableError,
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
           );
           break;
         case _StopReason.multipleExecutablesError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.multipleExecutablesError(error ?? translations.unknown),
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
@@ -658,7 +658,7 @@ class _LaunchButtonState extends State<LaunchButton> {
         case _StopReason.exitCode:
           if(instance != null && !instance.launched) {
             final injectedDlls = instance.injectedDlls;
-            showRebootInfoBar(
+            showSplasherInfoBar(
               translations.corruptedVersionError(injectedDlls.isEmpty ? translations.none : injectedDlls.map((element) => element.name).join(", ")),
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration,
@@ -667,7 +667,7 @@ class _LaunchButtonState extends State<LaunchButton> {
           break;
         case _StopReason.corruptedVersionError:
           final injectedDlls = instance?.injectedDlls ?? [];
-          showRebootInfoBar(
+          showSplasherInfoBar(
               translations.corruptedVersionError(injectedDlls.isEmpty ? translations.none : injectedDlls.map((element) => element.name).join(", ")),
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration,
@@ -678,14 +678,14 @@ class _LaunchButtonState extends State<LaunchButton> {
           );
           break;
         case _StopReason.corruptedDllError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.corruptedDllError(error ?? translations.unknownError),
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
           );
           break;
         case _StopReason.missingCustomDllError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.missingCustomDllError(error!),
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
@@ -694,7 +694,7 @@ class _LaunchButtonState extends State<LaunchButton> {
         case _StopReason.tokenError:
           _backendController.stop(interactive: false);
           final injectedDlls = instance?.injectedDlls;
-          showRebootInfoBar(
+          showSplasherInfoBar(
               translations.tokenError(injectedDlls == null || injectedDlls.isEmpty ? translations.none : injectedDlls.map((element) => element.name).join(", ")),
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration,
@@ -705,21 +705,21 @@ class _LaunchButtonState extends State<LaunchButton> {
           );
           break;
         case _StopReason.crash:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.fortniteCrashError(host ? translations.gameServer : translations.client),
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
           );
           break;
         case _StopReason.unknownError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.unknownFortniteError(error ?? translations.unknownError),
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
           );
           break;
         case _StopReason.gameServerPortError:
-          showRebootInfoBar(
+          showSplasherInfoBar(
             translations.gameServerPortEqualsBackendPort(kDefaultBackendPort),
             severity: InfoBarSeverity.error,
             duration: infoBarLongDuration,
@@ -796,14 +796,14 @@ class _LaunchButtonState extends State<LaunchButton> {
     return null;
   }
 
-  InfoBarEntry _showLaunchingGameServerWidget() => _gameServerInfoBar = showRebootInfoBar(
+  InfoBarEntry _showLaunchingGameServerWidget() => _gameServerInfoBar = showSplasherInfoBar(
       translations.launchingGameServer,
       loading: true,
       duration: null
   );
 
   InfoBarEntry _showLaunchingGameClientWidget(FortniteVersion version, bool headless, bool linkedHosting) {
-    return _gameClientInfoBar = showRebootInfoBar(
+    return _gameClientInfoBar = showSplasherInfoBar(
         linkedHosting ? translations.launchingGameClientAndServer : translations.launchingGameClientOnly,
         loading: true,
         duration: null,

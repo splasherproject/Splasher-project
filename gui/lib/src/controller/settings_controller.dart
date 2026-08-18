@@ -4,10 +4,10 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/main.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/main.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/util/translations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:version/version.dart';
 import 'package:yaml/yaml.dart';
@@ -66,7 +66,7 @@ class SettingsController extends GetxController {
     }
 
     late InfoBarEntry infoBar;
-    infoBar = showRebootInfoBar(
+    infoBar = showSplasherInfoBar(
         translations.updateAvailable(latestVersion.toString()),
         duration: null,
         severity: InfoBarSeverity.warning,
@@ -75,7 +75,7 @@ class SettingsController extends GetxController {
           onPressed: () {
             infoBar.close();
             launchUrl(Uri.parse(
-                "https://github.com/Auties00/reboot_launcher/releases"));
+                "https://github.com/YOUR_ORG/splasher/releases"));
           },
         )
     );
@@ -84,7 +84,7 @@ class SettingsController extends GetxController {
   Future<dynamic> _getPubspecYaml() async {
     try {
       final pubspecResponse = await http.get(Uri.parse(
-          "https://raw.githubusercontent.com/Auties00/reboot_launcher/master/gui/pubspec.yaml"));
+          "https://raw.githubusercontent.com/YOUR_ORG/splasher/master/gui/pubspec.yaml"));
       if (pubspecResponse.statusCode != 200) {
         return null;
       }

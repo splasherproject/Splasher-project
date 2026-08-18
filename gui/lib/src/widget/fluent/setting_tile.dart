@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/page/pages.dart';
 import 'package:skeletons/skeletons.dart';
 
 class SettingTile extends StatefulWidget {

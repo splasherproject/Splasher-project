@@ -2,10 +2,10 @@ import 'dart:io';
 import 'dart:isolate';
 
 import 'package:interact_cli/interact_cli.dart';
-import 'package:reboot_cli/src/controller/config.dart';
-import 'package:reboot_cli/src/util/console.dart';
-import 'package:reboot_cli/src/util/extensions.dart';
-import 'package:reboot_common/common.dart';
+import 'package:splasher_cli/src/controller/config.dart';
+import 'package:splasher_cli/src/util/console.dart';
+import 'package:splasher_cli/src/util/extensions.dart';
+import 'package:splasher_common/common.dart';
 import 'package:tint/tint.dart';
 import 'package:version/version.dart';
 
@@ -28,9 +28,9 @@ void main(List<String> args) async {
   useDefaultPath = true;
 
   print("""
-🎮 Reboot Launcher
-🔥 Launch, manage, and play Fortnite using Project Reboot!
-🚀 Developed by Auties00 - Version 10.0.7
+🎮 Splasher
+🔥 Launch, manage, and play Fortnite with Splasher!
+🚀 Version 10.0.7
 """.green());
 
   final parser = ConsoleParser(

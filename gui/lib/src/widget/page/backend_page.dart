@@ -3,18 +3,18 @@ import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/backend_controller.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/message/data.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/keyboard.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/server/server_start_button.dart';
-import 'package:reboot_launcher/src/widget/server/server_type_selector.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/backend_controller.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/message/data.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/keyboard.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/server/server_start_button.dart';
+import 'package:splasher/src/widget/server/server_type_selector.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<OverlayTargetState> backendTypeOverlayTargetKey = GlobalKey();
@@ -22,7 +22,7 @@ final GlobalKey<OverlayTargetState> backendGameServerAddressOverlayTargetKey = G
 final GlobalKey<OverlayTargetState> backendUnrealEngineOverlayTargetKey = GlobalKey();
 final GlobalKey<OverlayTargetState> backendDetachedOverlayTargetKey = GlobalKey();
 
-class BackendPage extends RebootPage {
+class BackendPage extends SplasherPage {
   const BackendPage({Key? key}) : super(key: key);
 
   @override
@@ -32,16 +32,16 @@ class BackendPage extends RebootPage {
   String get iconAsset => "assets/images/backend.png";
 
   @override
-  RebootPageType get type => RebootPageType.backend;
+  SplasherPageType get type => SplasherPageType.backend;
 
   @override
   bool hasButton(String? pageName) => pageName == null;
 
   @override
-  RebootPageState<BackendPage> createState() => _BackendPageState();
+  SplasherPageState<BackendPage> createState() => _BackendPageState();
 }
 
-class _BackendPageState extends RebootPageState<BackendPage> {
+class _BackendPageState extends SplasherPageState<BackendPage> {
   final BackendController _backendController = Get.find<BackendController>();
 
   InfoBarEntry? _infoBarEntry;
@@ -191,7 +191,7 @@ class _BackendPageState extends RebootPageState<BackendPage> {
         key: backendUnrealEngineOverlayTargetKey,
         child: Button(
           onPressed: () {
-            _infoBarEntry = showRebootInfoBar(
+            _infoBarEntry = showSplasherInfoBar(
                 translations.clickKey,
                 loading: true,
                 duration: null

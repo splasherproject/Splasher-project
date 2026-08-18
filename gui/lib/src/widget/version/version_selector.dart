@@ -4,15 +4,15 @@ import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/gestures.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
-import 'package:reboot_launcher/src/widget/version/download_version.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/version/import_version.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher/src/widget/version/download_version.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/version/import_version.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class VersionSelector extends StatefulWidget {
@@ -38,7 +38,7 @@ class VersionSelector extends StatefulWidget {
       )
   );
 
-  static Future<void> openImportDialog(FortniteVersion? version) => showRebootDialog<bool>(
+  static Future<void> openImportDialog(FortniteVersion? version) => showSplasherDialog<bool>(
       builder: (context) => ImportVersionDialog(
         version: version,
         closable: true,
@@ -46,7 +46,7 @@ class VersionSelector extends StatefulWidget {
       dismissWithEsc: true
   );
 
-  static Future<void> openDownloadDialog() => showRebootDialog<bool>(
+  static Future<void> openDownloadDialog() => showSplasherDialog<bool>(
     builder: (context) => DownloadVersionDialog(
       closable: true,
     ),
@@ -221,7 +221,7 @@ class _VersionSelectorState extends State<VersionSelector> {
   }
 
   bool _onExplorerError() {
-    showRebootInfoBar(
+    showSplasherInfoBar(
       translations.missingVersionError,
       severity: InfoBarSeverity.error,
       duration: infoBarLongDuration,
@@ -230,7 +230,7 @@ class _VersionSelectorState extends State<VersionSelector> {
   }
 
   Future<bool?> _openDeleteDialog(FortniteVersion version) {
-    return showRebootDialog<bool>(
+    return showSplasherDialog<bool>(
         builder: (context) => ContentDialog(
           content: Column(
             mainAxisSize: MainAxisSize.min,

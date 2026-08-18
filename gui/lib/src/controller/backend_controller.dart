@@ -8,17 +8,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/main.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
-import 'package:reboot_launcher/src/util/cryptography.dart';
-import 'package:reboot_launcher/src/util/keyboard.dart';
-import 'package:reboot_launcher/src/util/matchmaker.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/main.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/page/pages.dart';
+import 'package:splasher/src/util/cryptography.dart';
+import 'package:splasher/src/util/keyboard.dart';
+import 'package:splasher/src/util/matchmaker.dart';
+import 'package:splasher/src/util/translations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'hosting_controller.dart';
@@ -173,7 +173,7 @@ class BackendController extends GetxController {
                 .instance
                 .value
                 ?.kill();
-            _showRebootInfoBar(
+            _showSplasherInfoBar(
                 translations.backendErrorMessage,
                 severity: InfoBarSeverity.error,
                 duration: infoBarLongDuration,
@@ -235,7 +235,7 @@ class BackendController extends GetxController {
     switch (event.type) {
       case ServerResultType.starting:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.startingServer,
               severity: InfoBarSeverity.info,
               loading: true,
@@ -246,7 +246,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startSuccess:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               type.value == ServerType.local ? translations.checkedServer : translations.startedServer,
               severity: InfoBarSeverity.success
           );
@@ -255,7 +255,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               type.value == ServerType.local ? translations.localServerError(event.error ?? translations.unknownError) : translations.startServerError(event.error ?? translations.unknownError),
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration
@@ -265,7 +265,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.stopping:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.stoppingServer,
               severity: InfoBarSeverity.info,
               loading: true,
@@ -276,7 +276,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.stopSuccess:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.stoppedServer,
               severity: InfoBarSeverity.success
           );
@@ -285,7 +285,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.stopError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.stopServerError(event.error ?? translations.unknownError),
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration
@@ -295,7 +295,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startMissingHostError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.missingHostNameError,
               severity: InfoBarSeverity.error
           );
@@ -304,7 +304,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startMissingPortError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.missingPortError,
               severity: InfoBarSeverity.error
           );
@@ -313,7 +313,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startIllegalPortError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.illegalPortError,
               severity: InfoBarSeverity.error
           );
@@ -322,7 +322,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startFreeingPort:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.freeingPort,
               loading: true,
               duration: null
@@ -332,7 +332,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startFreePortSuccess:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.freedPort,
               severity: InfoBarSeverity.success,
               duration: infoBarShortDuration
@@ -342,7 +342,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startFreePortError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.freePortError(event.error ?? translations.unknownError),
               severity: InfoBarSeverity.error,
               duration: infoBarLongDuration
@@ -352,7 +352,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startPingingRemote:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.pingingServer(ServerType.remote.name),
               severity: InfoBarSeverity.info,
               loading: true,
@@ -363,7 +363,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startPingingLocal:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.pingingServer(type.value.name),
               severity: InfoBarSeverity.info,
               loading: true,
@@ -374,7 +374,7 @@ class BackendController extends GetxController {
         }
       case ServerResultType.startPingError:
         if(interactive) {
-          return _showRebootInfoBar(
+          return _showSplasherInfoBar(
               translations.pingError(type.value.name),
               severity: InfoBarSeverity.error
           );
@@ -389,7 +389,7 @@ class BackendController extends GetxController {
 
   Future<void> joinServer(String uuid, FortniteServer server) async {
     if(!kDebugMode && uuid == server.id) {
-      _showRebootInfoBar(
+      _showSplasherInfoBar(
           translations.joinSelfServer,
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error
@@ -400,7 +400,7 @@ class BackendController extends GetxController {
     final version = Get.find<GameController>()
         .getVersionByGame(server.version.toString());
     if(version == null) {
-      _showRebootInfoBar(
+      _showSplasherInfoBar(
           translations.cannotJoinServerVersion(server.version.toString()),
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error
@@ -429,7 +429,7 @@ class BackendController extends GetxController {
     }
 
     if(!checkPassword(confirmPassword, hashedPassword)) {
-      _showRebootInfoBar(
+      _showSplasherInfoBar(
           translations.wrongServerPassword,
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error
@@ -452,7 +452,7 @@ class BackendController extends GetxController {
       return true;
     }
 
-    _showRebootInfoBar(
+    _showSplasherInfoBar(
         translations.offlineServer,
         duration: infoBarLongDuration,
         severity: InfoBarSeverity.error
@@ -464,7 +464,7 @@ class BackendController extends GetxController {
     final confirmPasswordController = TextEditingController();
     final showPassword = RxBool(false);
     final showPasswordTrailing = RxBool(false);
-    return await showRebootDialog<String?>(
+    return await showSplasherDialog<String?>(
         builder: (context) => FormDialog(
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -516,26 +516,26 @@ class BackendController extends GetxController {
   void _onServerJoined(bool embedded, String decryptedIp, String author, FortniteVersion version) {
     if(embedded) {
       gameServerAddress.text = decryptedIp;
-      pageIndex.value = RebootPageType.play.index;
+      pageIndex.value = SplasherPageType.play.index;
     }else {
       FlutterClipboard.controlC(decryptedIp);
     }
     Get.find<GameController>().selectedVersion.value = version;
-    WidgetsBinding.instance.addPostFrameCallback((_) => _showRebootInfoBar(
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showSplasherInfoBar(
         embedded ? translations.joinedServer(author) : translations.copiedIp,
         duration: infoBarLongDuration,
         severity: InfoBarSeverity.success
     ));
   }
 
-  InfoBarEntry _showRebootInfoBar(dynamic text, {
+  InfoBarEntry _showSplasherInfoBar(dynamic text, {
     InfoBarSeverity severity = InfoBarSeverity.info,
     bool loading = false,
     Duration? duration = infoBarShortDuration,
     void Function()? onDismissed,
     Widget? action
   }) {
-    final result = showRebootInfoBar(
+    final result = showSplasherInfoBar(
         text,
         severity: severity,
         loading: loading,

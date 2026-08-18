@@ -3,21 +3,21 @@ import 'dart:collection';
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/widget/page/backend_page.dart';
-import 'package:reboot_launcher/src/widget/page/browser_page.dart';
-import 'package:reboot_launcher/src/widget/page/host_page.dart';
-import 'package:reboot_launcher/src/widget/page/info_page.dart';
-import 'package:reboot_launcher/src/widget/page/play_page.dart';
-import 'package:reboot_launcher/src/widget/page/settings_page.dart';
-import 'package:reboot_launcher/src/widget/window/info_bar_area.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/widget/page/backend_page.dart';
+import 'package:splasher/src/widget/page/browser_page.dart';
+import 'package:splasher/src/widget/page/host_page.dart';
+import 'package:splasher/src/widget/page/info_page.dart';
+import 'package:splasher/src/widget/page/play_page.dart';
+import 'package:splasher/src/widget/page/settings_page.dart';
+import 'package:splasher/src/widget/window/info_bar_area.dart';
 
 final StreamController<void> pagesController = StreamController.broadcast();
 bool hitBack = false;
 
-final List<RebootPage> pages = [
+final List<SplasherPage> pages = [
   const PlayPage(),
   const HostPage(),
   const BrowsePage(),
@@ -28,7 +28,7 @@ final List<RebootPage> pages = [
 
 final List<GlobalKey<OverlayTargetState>> _flyoutPageControllers = List.generate(pages.length, (_) => GlobalKey());
 
-final RxInt pageIndex = RxInt(RebootPageType.play.index);
+final RxInt pageIndex = RxInt(SplasherPageType.play.index);
 
 final HashMap<int, GlobalKey> _pageKeys = HashMap();
 

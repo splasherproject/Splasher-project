@@ -5,10 +5,10 @@ import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:reboot_launcher/src/util/os.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/file/file_selector.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher/src/util/os.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/file/file_selector.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
 
 const double _kButtonDimensions = 30;
 const double _kButtonSpacing = 8;

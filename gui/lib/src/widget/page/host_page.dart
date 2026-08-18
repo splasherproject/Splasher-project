@@ -5,19 +5,19 @@ import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:reboot_launcher/main.dart';
-import 'package:reboot_launcher/src/controller/dll_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/message/data.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/game/game_start_button.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
-import 'package:reboot_launcher/src/widget/version/version_selector.dart';
+import 'package:splasher/main.dart';
+import 'package:splasher/src/controller/dll_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/message/data.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/game/game_start_button.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher/src/widget/version/version_selector.dart';
 
 final GlobalKey<OverlayTargetState> hostVersionOverlayTargetKey = GlobalKey();
 final GlobalKey<OverlayTargetState> hostInfoOverlayTargetKey = GlobalKey();
@@ -27,7 +27,7 @@ final GlobalKey<OverlayTargetState> hostInfoPasswordOverlayTargetKey = GlobalKey
 final GlobalKey<OverlayTargetState> hostShareOverlayTargetKey = GlobalKey();
 final GlobalKey<SettingTileState> hostInfoTileKey = GlobalKey();
 
-class HostPage extends RebootPage {
+class HostPage extends SplasherPage {
   const HostPage({Key? key}) : super(key: key);
 
   @override
@@ -37,16 +37,16 @@ class HostPage extends RebootPage {
   String get iconAsset => "assets/images/host.png";
 
   @override
-  RebootPageType get type => RebootPageType.host;
+  SplasherPageType get type => SplasherPageType.host;
 
   @override
   bool hasButton(String? pageName) => pageName == null;
 
   @override
-  RebootPageState<HostPage> createState() => _HostingPageState();
+  SplasherPageState<HostPage> createState() => _HostingPageState();
 }
 
-class _HostingPageState extends RebootPageState<HostPage> {
+class _HostingPageState extends SplasherPageState<HostPage> {
   final GameController _gameController = Get.find<GameController>();
   final HostingController _hostingController = Get.find<HostingController>();
   final DllController _dllController = Get.find<DllController>();
@@ -348,29 +348,29 @@ class _HostingPageState extends RebootPageState<HostPage> {
     }
   }
 
-  void _showCopiedLink() => showRebootInfoBar(
+  void _showCopiedLink() => showSplasherInfoBar(
       translations.hostShareLinkMessageSuccess,
       severity: InfoBarSeverity.success
   );
 
-  InfoBarEntry _showCopyingIp() => showRebootInfoBar(
+  InfoBarEntry _showCopyingIp() => showSplasherInfoBar(
       translations.hostShareIpMessageLoading,
       loading: true,
       duration: null
   );
 
-  void _showCopiedIp() => showRebootInfoBar(
+  void _showCopiedIp() => showSplasherInfoBar(
       translations.hostShareIpMessageSuccess,
       severity: InfoBarSeverity.success
   );
 
-  void _showCannotCopyIp(Object error) => showRebootInfoBar(
+  void _showCannotCopyIp(Object error) => showSplasherInfoBar(
       translations.hostShareIpMessageError(error.toString()),
       severity: InfoBarSeverity.error,
       duration: infoBarLongDuration
   );
 
-  void _showCannotUpdateGameServer(Object error) => showRebootInfoBar(
+  void _showCannotUpdateGameServer(Object error) => showSplasherInfoBar(
       translations.cannotUpdateGameServer(error.toString()),
       severity: InfoBarSeverity.success,
       duration: infoBarLongDuration

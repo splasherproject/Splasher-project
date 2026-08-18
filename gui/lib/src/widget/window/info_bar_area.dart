@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
+import 'package:splasher/src/page/pages.dart';
 
 class InfoBarArea extends StatefulWidget {
   const InfoBarArea({super.key});

@@ -1,4 +1,4 @@
-enum RebootPageType {
+enum SplasherPageType {
   play,
   host,
   browser,

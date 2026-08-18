@@ -1,5 +1,5 @@
-name: reboot_launcher
-description: Graphical User Interface for Project Reboot
+name: splasher
+description: Graphical User Interface for Splasher
 version: "10.0.9"
 
 publish_to: 'none'
@@ -16,8 +16,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Reboot common module
-  reboot_common:
+  # Splasher common module
+  splasher_common:
     path: ./../common
 
   # Windows UI 3

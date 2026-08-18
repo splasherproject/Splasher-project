@@ -5,7 +5,7 @@ import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
-import 'package:reboot_common/common.dart';
+import 'package:splasher_common/common.dart';
 import 'package:win32/win32.dart';
 import 'package:path/path.dart' as path;
 
@@ -13,7 +13,7 @@ bool useDefaultPath = false;
 
 Directory get installationDirectory {
   if(useDefaultPath) {
-    final dir = Directory('$_home/Reboot Launcher');
+    final dir = Directory('$_home/Splasher');
     dir.createSync(recursive: true);
     return dir;
   }else {
@@ -357,7 +357,7 @@ Future<Process> startProcess({required File executable, List<String>? args, bool
   final argsOrEmpty = args ?? [];
   final workingDirectory = _getWorkingDirectory(executable);
   if(useTempBatch) {
-    final tempScriptDirectory = await tempDirectory.createTemp("reboot_launcher_process");
+    final tempScriptDirectory = await tempDirectory.createTemp("splasher_process");
     final tempScriptFile = File("${tempScriptDirectory.path}\\process.bat");
     final command = window ? 'cmd.exe /k ""${executable.path}" ${argsOrEmpty.join(" ")}"' : '"${executable.path}" ${argsOrEmpty.join(" ")}';
     await tempScriptFile.writeAsString(command, flush: true);

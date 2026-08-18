@@ -7,24 +7,24 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' show MaterialPage;
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/backend_controller.dart';
-import 'package:reboot_launcher/src/controller/dll_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/controller/settings_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/messenger/info_bar.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/message/dll.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_suggestion.dart';
-import 'package:reboot_launcher/src/page/pages.dart';
-import 'package:reboot_launcher/src/util/matchmaker.dart';
-import 'package:reboot_launcher/src/util/os.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/window/info_bar_area.dart';
-import 'package:reboot_launcher/src/widget/fluent/profile_tile.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/backend_controller.dart';
+import 'package:splasher/src/controller/dll_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/controller/settings_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/messenger/info_bar.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/message/dll.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_suggestion.dart';
+import 'package:splasher/src/page/pages.dart';
+import 'package:splasher/src/util/matchmaker.dart';
+import 'package:splasher/src/util/os.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/window/info_bar_area.dart';
+import 'package:splasher/src/widget/fluent/profile_tile.dart';
 import 'package:version/version.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
     if(server != null) {
       _backendController.joinServer(_hostingController.uuid, server);
     }else {
-      showRebootInfoBar(
+      showSplasherInfoBar(
           translations.noServerFound,
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error
@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
       }
 
       _backendController.joinLocalhost();
-      WidgetsBinding.instance.addPostFrameCallback((_) => showRebootInfoBar(
+      WidgetsBinding.instance.addPostFrameCallback((_) => showSplasherInfoBar(
           translations.serverNoLongerAvailableUnnamed,
           severity: InfoBarSeverity.warning,
           duration: infoBarLongDuration
@@ -479,7 +479,7 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
       )
   );
 
-  Widget _buildNavigationItem(RebootPage page) {
+  Widget _buildNavigationItem(SplasherPage page) {
     final index = page.type.index;
     return OverlayTarget(
       key: getOverlayTargetKeyByPage(index),

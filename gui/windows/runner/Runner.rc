@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "reboot_launcher" "\0"
+            VALUE "CompanyName", "Splasher" "\0"
+            VALUE "FileDescription", "splasher" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "reboot_launcher" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "reboot_launcher.exe" "\0"
-            VALUE "ProductName", "reboot_launcher" "\0"
+            VALUE "InternalName", "splasher" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Splasher. All rights reserved." "\0"
+            VALUE "OriginalFilename", "splasher.exe" "\0"
+            VALUE "ProductName", "splasher" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

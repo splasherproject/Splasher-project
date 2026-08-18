@@ -1,24 +1,24 @@
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:get/get.dart';
-import 'package:reboot_launcher/src/controller/dll_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/messenger/overlay.dart';
-import 'package:reboot_launcher/src/widget/message/data.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/game/game_start_button.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
-import 'package:reboot_launcher/src/widget/version/version_selector.dart';
+import 'package:splasher/src/controller/dll_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/messenger/overlay.dart';
+import 'package:splasher/src/widget/message/data.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/game/game_start_button.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher/src/widget/version/version_selector.dart';
 
 final GlobalKey<OverlayTargetState> gameVersionOverlayTargetKey = GlobalKey();
 
-class PlayPage extends RebootPage {
+class PlayPage extends SplasherPage {
   const PlayPage({Key? key}) : super(key: key);
 
   @override
-  RebootPageState<PlayPage> createState() => _PlayPageState();
+  SplasherPageState<PlayPage> createState() => _PlayPageState();
 
   @override
   bool hasButton(String? pageName) => pageName == null;
@@ -30,10 +30,10 @@ class PlayPage extends RebootPage {
   String get iconAsset => "assets/images/play.png";
 
   @override
-  RebootPageType get type => RebootPageType.play;
+  SplasherPageType get type => SplasherPageType.play;
 }
 
-class _PlayPageState extends RebootPageState<PlayPage> {
+class _PlayPageState extends SplasherPageState<PlayPage> {
   final GameController _gameController = Get.find<GameController>();
   final DllController _dllController = Get.find<DllController>();
 

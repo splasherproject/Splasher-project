@@ -4,24 +4,24 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart' as fluentUiIcons;
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/backend_controller.dart';
-import 'package:reboot_launcher/src/controller/game_controller.dart';
-import 'package:reboot_launcher/src/controller/hosting_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/backend_controller.dart';
+import 'package:splasher/src/controller/game_controller.dart';
+import 'package:splasher/src/controller/hosting_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
 
-class BrowsePage extends RebootPage {
+class BrowsePage extends SplasherPage {
   const BrowsePage({Key? key}) : super(key: key);
 
   @override
   String get name => translations.browserName;
 
   @override
-  RebootPageType get type => RebootPageType.browser;
+  SplasherPageType get type => SplasherPageType.browser;
 
   @override
   String get iconAsset => "assets/images/server_browser.png";
@@ -30,10 +30,10 @@ class BrowsePage extends RebootPage {
   bool hasButton(String? pageName) => false;
 
   @override
-  RebootPageState<BrowsePage> createState() => _BrowsePageState();
+  SplasherPageState<BrowsePage> createState() => _BrowsePageState();
 }
 
-class _BrowsePageState extends RebootPageState<BrowsePage> {
+class _BrowsePageState extends SplasherPageState<BrowsePage> {
   final GameController _gameController = Get.find<GameController>();
   final HostingController _hostingController = Get.find<HostingController>();
   final BackendController _backendController = Get.find<BackendController>();

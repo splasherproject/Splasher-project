@@ -3,18 +3,18 @@ import 'dart:math';
 import 'package:async/async.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:flutter_gen/gen_l10n/reboot_localizations.dart';
+import 'package:flutter_gen/gen_l10n/splasher_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:get/get.dart';
-import 'package:reboot_common/common.dart';
-import 'package:reboot_launcher/src/controller/dll_controller.dart';
-import 'package:reboot_launcher/src/controller/settings_controller.dart';
-import 'package:reboot_launcher/src/messenger/dialog.dart';
-import 'package:reboot_launcher/src/page/page.dart';
-import 'package:reboot_launcher/src/page/page_type.dart';
-import 'package:reboot_launcher/src/util/translations.dart';
-import 'package:reboot_launcher/src/widget/file/file_setting_tile.dart';
-import 'package:reboot_launcher/src/widget/fluent/setting_tile.dart';
+import 'package:splasher_common/common.dart';
+import 'package:splasher/src/controller/dll_controller.dart';
+import 'package:splasher/src/controller/settings_controller.dart';
+import 'package:splasher/src/messenger/dialog.dart';
+import 'package:splasher/src/page/page.dart';
+import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/translations.dart';
+import 'package:splasher/src/widget/file/file_setting_tile.dart';
+import 'package:splasher/src/widget/fluent/setting_tile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<TextFormBoxState> settingsConsoleDllInputKey = GlobalKey();
@@ -22,7 +22,7 @@ final GlobalKey<TextFormBoxState> settingsAuthDllInputKey = GlobalKey();
 final GlobalKey<TextFormBoxState> settingsMemoryDllInputKey = GlobalKey();
 final GlobalKey<TextFormBoxState> settingsGameServerDllInputKey = GlobalKey();
 
-class SettingsPage extends RebootPage {
+class SettingsPage extends SplasherPage {
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
@@ -32,16 +32,16 @@ class SettingsPage extends RebootPage {
   String get iconAsset => "assets/images/settings.png";
 
   @override
-  RebootPageType get type => RebootPageType.settings;
+  SplasherPageType get type => SplasherPageType.settings;
 
   @override
   bool hasButton(String? pageName) => false;
 
   @override
-  RebootPageState<SettingsPage> createState() => _SettingsPageState();
+  SplasherPageState<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends RebootPageState<SettingsPage> {
+class _SettingsPageState extends SplasherPageState<SettingsPage> {
   final SettingsController _settingsController = Get.find<SettingsController>();
   final DllController _dllController = Get.find<DllController>();
   int? _downloadFromMirrorId;
