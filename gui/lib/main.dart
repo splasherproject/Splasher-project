@@ -173,7 +173,7 @@ Future<void> _initWindow() async {
     if(isWin11) {
       await Window.setEffect(
           effect: WindowEffect.acrylic,
-          color: isDarkMode ? const Color(0xFF0B1518) : const Color(0xFFF5FBFC),
+          color: isDarkMode ? const Color(0xFF0C0C0E) : const Color(0xFFF5F6F7),
           dark: isDarkMode
       );
     }

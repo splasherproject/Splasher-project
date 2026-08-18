@@ -1,16 +1,15 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-/// Splasher's brand accent: a vivid aqua/cyan "splash" palette, used instead
-/// of the Windows system accent so the app keeps a consistent identity
-/// across machines.
+/// Splasher's brand accent: a muted forest green, near-black surfaces —
+/// modeled after modern gaming launcher dashboards (dark card-based UI).
 const Map<String, Color> _kSplasherAccentSwatch = <String, Color>{
-  'darkest': Color(0xFF04222B),
-  'darker': Color(0xFF063A49),
-  'dark': Color(0xFF0A5C70),
-  'normal': Color(0xFF00BCD4),
-  'light': Color(0xFF26E1F0),
-  'lighter': Color(0xFF7DF0F7),
-  'lightest': Color(0xFFD6FBFC),
+  'darkest': Color(0xFF0F2419),
+  'darker': Color(0xFF1B4029),
+  'dark': Color(0xFF2A6144),
+  'normal': Color(0xFF3E9169),
+  'light': Color(0xFF5AB588),
+  'lighter': Color(0xFF8CD3AC),
+  'lightest': Color(0xFFD6F3E4),
 };
 
 final AccentColor kSplasherAccentColor = AccentColor.swatch(_kSplasherAccentSwatch);
@@ -25,6 +24,13 @@ const String kSplasherFontFamily = 'Inter';
 const double _kPillRadius = 20.0;
 const BorderRadius _kCardRadius = BorderRadius.all(Radius.circular(16.0));
 
+// Near-black gaming-launcher palette.
+const Color _kDarkBackground = Color(0xFF0C0C0E);
+const Color _kDarkCard = Color(0xFF18181C);
+const Color _kDarkBorder = Color(0xFF242429);
+const Color _kLightBackground = Color(0xFFF5F6F7);
+const Color _kLightCard = Color(0xFFFFFFFF);
+
 final RoundedRectangleBorder _pillShape = RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(_kPillRadius),
 );
@@ -38,11 +44,11 @@ FluentThemeData buildSplasherTheme(Brightness brightness) {
       fontFamily: kSplasherFontFamily,
       visualDensity: VisualDensity.standard,
       scaffoldBackgroundColor: Colors.transparent,
-      cardColor: isDark ? const Color(0xFF172226) : const Color(0xFFFFFFFF),
+      micaBackgroundColor: isDark ? _kDarkBackground : _kLightBackground,
+      cardColor: isDark ? _kDarkCard : _kLightCard,
+      menuColor: isDark ? _kDarkCard : _kLightCard,
       navigationPaneTheme: NavigationPaneThemeData(
-        backgroundColor: isDark
-            ? const Color(0xF00E1A1D)
-            : const Color(0xF0F7FBFC),
+        backgroundColor: isDark ? _kDarkBackground : _kLightBackground,
         highlightColor: kSplasherAccentColor,
       ),
       buttonTheme: ButtonThemeData(
@@ -67,8 +73,9 @@ FluentThemeData buildSplasherTheme(Brightness brightness) {
       ),
       dialogTheme: ContentDialogThemeData(
         decoration: BoxDecoration(
-          color: isDark ? const Color(0xFF1B2A2E) : Colors.white,
+          color: isDark ? _kDarkCard : Colors.white,
           borderRadius: _kCardRadius,
+          border: isDark ? Border.all(color: _kDarkBorder) : null,
         ),
       ),
   );

@@ -62,10 +62,12 @@ class SettingTileState extends State<SettingTile> {
   );
 
   Card _buildBody() {
+    final isDark = FluentTheme.of(context).brightness == Brightness.dark;
     return Card(
         borderRadius: const BorderRadius.all(
             Radius.circular(14.0)
         ),
+        borderColor: isDark ? const Color(0xFF242429) : null,
         child: Padding(
           padding: const EdgeInsetsDirectional.symmetric(
               horizontal: 12.0
