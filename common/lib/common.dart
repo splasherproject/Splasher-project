@@ -16,3 +16,4 @@ export 'package:splasher_common/src/util/os.dart';
 export 'package:splasher_common/src/util/log.dart';
 export 'package:splasher_common/src/util/game.dart';
 export 'package:splasher_common/src/util/extensions.dart';
+export 'package:splasher_common/src/util/loadout.dart';

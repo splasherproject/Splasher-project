@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:get/get.dart';
@@ -21,6 +23,35 @@ class ProfileWidget extends StatefulWidget {
 class _ProfileWidgetState extends State<ProfileWidget> {
   final GameController _gameController = Get.find<GameController>();
   final HostingController _hostingController = Get.find<HostingController>();
+  String? _outfitIconUrl;
+  int _lastOutfitTimestamp = 0;
+  Timer? _outfitRefreshTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshOutfitIcon();
+    _outfitRefreshTimer = Timer.periodic(const Duration(seconds: 10), (_) => _refreshOutfitIcon());
+  }
+
+  @override
+  void dispose() {
+    _outfitRefreshTimer?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _refreshOutfitIcon() async {
+    final outfit = await getLastEquippedOutfit();
+    if (outfit == null || outfit.timestamp == _lastOutfitTimestamp) {
+      return;
+    }
+
+    _lastOutfitTimestamp = outfit.timestamp;
+    final iconUrl = await getOutfitIconUrl(outfit.templateId);
+    if (iconUrl != null && mounted) {
+      setState(() => _outfitIconUrl = iconUrl);
+    }
+  }
 
   @override
   Widget build(BuildContext context) => OverlayTarget(
@@ -52,17 +83,30 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 Container(
                     width: widget.expanded ? 48 : 36,
                     height: widget.expanded ? 48 : 36,
+                    clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: FluentTheme.of(context).accentColor.withAlpha(38)
                     ),
-                    child: Icon(
-                        FluentIcons.person_24_filled,
-                        size: widget.expanded ? 22 : 16,
-                        color: FluentTheme.of(context).accentColor.defaultBrushFor(
-                            FluentTheme.of(context).brightness
+                    child: _outfitIconUrl == null
+                        ? Icon(
+                            FluentIcons.person_24_filled,
+                            size: widget.expanded ? 22 : 16,
+                            color: FluentTheme.of(context).accentColor.defaultBrushFor(
+                                FluentTheme.of(context).brightness
+                            )
                         )
-                    )
+                        : Image.network(
+                            _outfitIconUrl!,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) => Icon(
+                                FluentIcons.person_24_filled,
+                                size: widget.expanded ? 22 : 16,
+                                color: FluentTheme.of(context).accentColor.defaultBrushFor(
+                                    FluentTheme.of(context).brightness
+                                )
+                            )
+                        )
                 ),
                 if(widget.expanded) ...[
                   const SizedBox(

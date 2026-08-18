@@ -7,6 +7,15 @@ const config = iniparser.parse(fs.readFileSync(path.join(__dirname, "..", "Confi
 const functions = require("./functions.js");
 const catalog = functions.getItemShop();
 
+function saveLastEquippedOutfit(itemId) {
+    if (!itemId) return;
+    try {
+        const stateDir = path.join(__dirname, "..", "state");
+        if (!fs.existsSync(stateDir)) fs.mkdirSync(stateDir);
+        fs.writeFileSync(path.join(stateDir, "last_loadout.json"), JSON.stringify({ characterId: itemId, timestamp: Date.now() }));
+    } catch (err) {}
+}
+
 express.use((req, res, next) => {
     if (!req.query.profileId && req.originalUrl.toLowerCase().startsWith("/fortnite/api/game/v2/profile/")) {
         return res.status(404).json({
@@ -7489,6 +7498,7 @@ express.post("/fortnite/api/game/v2/profile/*/client/EquipBattleRoyaleCustomizat
 
             case "Character":
                 profile.stats.attributes.favorite_character = req.body.itemToSlot || "";
+                saveLastEquippedOutfit(req.body.itemToSlot);
                 StatChanged = true;
                 break;
 
@@ -7770,6 +7780,7 @@ express.post("/fortnite/api/game/v2/profile/*/client/SetCosmeticLockerSlot", asy
 
             case "Character":
                 profile.items[req.body.lockerItem].attributes.locker_slots_data.slots.Character.items = [req.body.itemToSlot || ""];
+                saveLastEquippedOutfit(req.body.itemToSlot);
                 StatChanged = true;
                 break;
 

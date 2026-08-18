@@ -5,3 +5,5 @@
 gui/dist/
 gui/lib/l10n/splasher_localizations.dart
 gui/lib/l10n/splasher_localizations_en.dart
+backend/node_modules/
+backend/splasher-server.exe
