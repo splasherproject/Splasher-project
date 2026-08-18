@@ -11,7 +11,8 @@ import 'package:splasher/src/page/pages.dart';
 
 class ProfileWidget extends StatefulWidget {
   final GlobalKey<OverlayTargetState> overlayKey;
-  const ProfileWidget({required this.overlayKey});
+  final bool expanded;
+  const ProfileWidget({required this.overlayKey, this.expanded = true});
 
   @override
   State<ProfileWidget> createState() => _ProfileWidgetState();
@@ -46,46 +47,53 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 horizontal: 8.0
             ),
             child: Row(
+              mainAxisAlignment: widget.expanded ? MainAxisAlignment.start : MainAxisAlignment.center,
               children: [
                 Container(
-                    width: 64,
-                    height: 64,
+                    width: widget.expanded ? 48 : 36,
+                    height: widget.expanded ? 48 : 36,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: FluentTheme.of(context).accentColor.withAlpha(38)
                     ),
                     child: Icon(
                         FluentIcons.person_24_filled,
-                        size: 28,
+                        size: widget.expanded ? 22 : 16,
                         color: FluentTheme.of(context).accentColor.defaultBrushFor(
                             FluentTheme.of(context).brightness
                         )
                     )
                 ),
-                const SizedBox(
-                  width: 12.0,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                        _usernameLabel,
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w600
+                if(widget.expanded) ...[
+                  const SizedBox(
+                    width: 12.0,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            _usernameLabel,
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w600
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis
                         ),
-                        maxLines: 1
+                        Text(
+                            _emailLabel,
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w100
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis
+                        )
+                      ],
                     ),
-                    Text(
-                        _emailLabel,
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w100
-                        ),
-                        maxLines: 1
-                    )
-                  ],
-                )
+                  )
+                ]
               ],
             ),
           ),

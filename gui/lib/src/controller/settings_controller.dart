@@ -19,6 +19,7 @@ class SettingsController extends GetxController {
   late final RxString language;
   late final Rx<ThemeMode> themeMode;
   late final RxBool firstRun;
+  late final RxString backgroundImagePath;
   late double width;
   late double height;
   late double? offsetX;
@@ -36,6 +37,8 @@ class SettingsController extends GetxController {
     language.listen((value) => _storage?.write("language", value));
     firstRun = RxBool(_storage?.read("first_run_tutorial") ?? true);
     firstRun.listen((value) => _storage?.write("first_run_tutorial", value));
+    backgroundImagePath = RxString(_storage?.read("background_image_path") ?? "");
+    backgroundImagePath.listen((value) => _storage?.write("background_image_path", value));
   }
 
   void saveWindowSize(Size size) {

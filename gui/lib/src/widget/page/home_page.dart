@@ -270,8 +270,24 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
     super.build(context);
     _settingsController.language.value;
     loadTranslations(context);
-    return Container(
-        color: FluentTheme.of(context).micaBackgroundColor.withOpacity(0.93),
+    return Obx(() {
+      final backgroundPath = _settingsController.backgroundImagePath.value;
+      final hasCustomBackground = backgroundPath.isNotEmpty && File(backgroundPath).existsSync();
+      return Container(
+        decoration: hasCustomBackground
+            ? BoxDecoration(
+                image: DecorationImage(
+                    image: FileImage(File(backgroundPath)),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                        FluentTheme.of(context).micaBackgroundColor.withOpacity(0.55),
+                        BlendMode.srcOver
+                    )
+                )
+            )
+            : BoxDecoration(
+                color: FluentTheme.of(context).micaBackgroundColor.withOpacity(0.93)
+            ),
         child: Navigator(
           key: appNavigatorKey,
           onPopPage: (page, data) => false,
@@ -294,7 +310,8 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
             )
           ],
         )
-    );
+      );
+    });
   }
 
   Widget _buildBody() => Expanded(
@@ -443,28 +460,44 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
       )
   );
 
-  Widget _buildLateralView() => SizedBox(
-    width: 310,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Obx(() {
-          pageIndex.value;
-          return ProfileWidget(
-              overlayKey: profileOverlayKey
-          );
-        }),
-        _autoSuggestBox,
-        const SizedBox(height: 12.0),
-        _buildNavigationTrail()
-      ],
-    ),
+  static const double _kSidebarCollapsedWidth = 72.0;
+  static const double _kSidebarExpandedWidth = 310.0;
+  final RxBool _sidebarExpanded = RxBool(false);
+
+  Widget _buildLateralView() => MouseRegion(
+    onEnter: (_) => _sidebarExpanded.value = true,
+    onExit: (_) => _sidebarExpanded.value = false,
+    child: Obx(() {
+      final expanded = _sidebarExpanded.value;
+      return AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
+        width: expanded ? _kSidebarExpandedWidth : _kSidebarCollapsedWidth,
+        child: ClipRect(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Obx(() {
+                pageIndex.value;
+                return ProfileWidget(
+                    overlayKey: profileOverlayKey,
+                    expanded: expanded
+                );
+              }),
+              if(expanded) _autoSuggestBox,
+              const SizedBox(height: 12.0),
+              _buildNavigationTrail(expanded)
+            ],
+          ),
+        ),
+      );
+    }),
   );
 
-  Widget _buildNavigationTrail() => Expanded(
+  Widget _buildNavigationTrail(bool expanded) => Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-            horizontal: 16.0
+        padding: EdgeInsets.symmetric(
+            horizontal: expanded ? 16.0 : 12.0
         ),
         child: Scrollbar(
           child: ListView.separated(
@@ -473,13 +506,13 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
             separatorBuilder: (context, index) => const SizedBox(
                 height: 4.0
             ),
-            itemBuilder: (context, index) => _buildNavigationItem(pages[index]),
+            itemBuilder: (context, index) => _buildNavigationItem(pages[index], expanded),
           ),
         ),
       )
   );
 
-  Widget _buildNavigationItem(SplasherPage page) {
+  Widget _buildNavigationItem(SplasherPage page, bool expanded) {
     final index = page.type.index;
     return OverlayTarget(
       key: getOverlayTargetKeyByPage(index),
@@ -513,23 +546,29 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
                   borderRadius: const BorderRadius.all(Radius.circular(18.0))
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0
+                padding: EdgeInsets.symmetric(
+                    horizontal: expanded ? 12.0 : 0.0
                 ),
                 child: Row(
+                  mainAxisAlignment: expanded ? MainAxisAlignment.start : MainAxisAlignment.center,
                   children: [
                     SizedBox.square(
                         dimension: 24,
                         child: Icon(page.iconData, size: 18, color: foreground)
                     ),
-                    const SizedBox(width: 12.0),
-                    Text(
-                        page.name,
-                        style: TextStyle(
-                            color: foreground,
-                            fontWeight: selected ? FontWeight.w600 : FontWeight.normal
-                        )
-                    )
+                    if(expanded) ...[
+                      const SizedBox(width: 12.0),
+                      Expanded(
+                        child: Text(
+                            page.name,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: foreground,
+                                fontWeight: selected ? FontWeight.w600 : FontWeight.normal
+                            )
+                        ),
+                      )
+                    ]
                   ],
                 ),
               ),

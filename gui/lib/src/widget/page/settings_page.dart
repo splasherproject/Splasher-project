@@ -12,6 +12,7 @@ import 'package:splasher/src/controller/settings_controller.dart';
 import 'package:splasher/src/messenger/dialog.dart';
 import 'package:splasher/src/page/page.dart';
 import 'package:splasher/src/page/page_type.dart';
+import 'package:splasher/src/util/os.dart';
 import 'package:splasher/src/util/translations.dart';
 import 'package:splasher/src/widget/file/file_setting_tile.dart';
 import 'package:splasher/src/widget/fluent/setting_tile.dart';
@@ -53,6 +54,7 @@ class _SettingsPageState extends SplasherPageState<SettingsPage> {
   List<Widget> get settings => [
     _language,
     _theme,
+    _background,
     _internalFiles,
     _installationDirectory,
   ];
@@ -349,6 +351,43 @@ class _SettingsPageState extends SplasherPageState<SettingsPage> {
               onPressed: () => _settingsController.themeMode.value = themeMode
           )).toList()
       ))
+  );
+
+  SettingTile get _background => SettingTile(
+      icon: Icon(
+          FluentIcons.image_24_regular
+      ),
+      title: Text(translations.settingsUtilsBackgroundName),
+      subtitle: Text(translations.settingsUtilsBackgroundDescription),
+      content: Obx(() {
+        final hasBackground = _settingsController.backgroundImagePath.value.isNotEmpty;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if(hasBackground)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: IconButton(
+                  icon: Icon(FluentIcons.dismiss_circle_24_regular),
+                  onPressed: () => _settingsController.backgroundImagePath.value = "",
+                ),
+              ),
+            Button(
+              onPressed: () async {
+                inDialog = true;
+                final path = await openImageFilePicker();
+                inDialog = false;
+                if(path != null) {
+                  _settingsController.backgroundImagePath.value = path;
+                }
+              },
+              child: Text(hasBackground
+                  ? translations.settingsUtilsBackgroundChangeContent
+                  : translations.settingsUtilsBackgroundContent),
+            )
+          ],
+        );
+      })
   );
 
   SettingTile get _installationDirectory => SettingTile(

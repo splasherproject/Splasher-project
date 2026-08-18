@@ -30,6 +30,19 @@ Future<String?> openFolderPicker(String title) async {
   return await FilePicker.platform.getDirectoryPath(dialogTitle: title);
 }
 
+Future<String?> openImageFilePicker() async {
+  FilePicker.platform = FilePickerWindows();
+  var result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+      allowMultiple: false
+  );
+  if(result == null || result.files.isEmpty){
+    return null;
+  }
+
+  return result.files.first.path;
+}
+
 Future<String?> openFilePicker(String extension) async {
   FilePicker.platform = FilePickerWindows();
   var result = await FilePicker.platform.pickFiles(
