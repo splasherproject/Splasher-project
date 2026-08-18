@@ -15,14 +15,14 @@ final File rebootBeforeS20DllFile = File("${dllsDirectory.path}\\reboot.dll");
 final File rebootAboveS20DllFile = File("${dllsDirectory.path}\\rebootS20.dll");
 
 const String kRebootBelowS20DownloadUrl =
-    "https://nightly.link/Milxnor/Project-Reboot-3.0/workflows/msbuild/master/Reboot.zip";
+    "https://github.com/splasherproject/Splasher-project/releases/download/dlls-v1.0/Reboot.zip";
 const String kRebootAboveS20DownloadUrl =
-    "https://nightly.link/Milxnor/Project-Reboot-3.0/workflows/msbuild/master/RebootS20.zip";
+    "https://github.com/splasherproject/Splasher-project/releases/download/dlls-v1.0/RebootS20.zip";
 
 const String _kRebootBelowS20FallbackDownloadUrl =
-    "https://github.com/Auties00/reboot_launcher/raw/master/gui/dependencies/dlls/RebootFallback.zip";
+    "https://github.com/splasherproject/Splasher-project/raw/master/gui/dependencies/dlls/RebootFallback.zip";
 const String _kRebootAboveS20FallbackDownloadUrl =
-    "https://github.com/Auties00/reboot_launcher/raw/master/gui/dependencies/dlls/RebootS20Fallback.zip";
+    "https://github.com/splasherproject/Splasher-project/raw/master/gui/dependencies/dlls/RebootS20Fallback.zip";
 
 const String kStopBuildDownloadSignal = "kill";
 
