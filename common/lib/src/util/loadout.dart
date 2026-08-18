@@ -4,6 +4,10 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:splasher_common/common.dart';
 
+/// The base outfit ("Recruit") every account starts with before ever
+/// equipping a skin, used as the avatar fallback.
+const String kDefaultOutfitTemplateId = "AthenaCharacter:CID_001_Athena_Commando_F_Default";
+
 class LastEquippedOutfit {
   final String templateId;
   final int timestamp;

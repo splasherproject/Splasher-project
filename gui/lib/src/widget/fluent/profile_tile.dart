@@ -42,7 +42,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   Future<void> _refreshOutfitIcon() async {
     final outfit = await getLastEquippedOutfit();
-    if (outfit == null || outfit.timestamp == _lastOutfitTimestamp) {
+    if (outfit == null) {
+      if (_outfitIconUrl == null) {
+        final defaultIconUrl = await getOutfitIconUrl(kDefaultOutfitTemplateId);
+        if (defaultIconUrl != null && mounted) {
+          setState(() => _outfitIconUrl = defaultIconUrl);
+        }
+      }
+      return;
+    }
+
+    if (outfit.timestamp == _lastOutfitTimestamp) {
       return;
     }
 
