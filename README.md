@@ -1,4 +1,4 @@
-# Splasher
+![Splasher](.github/banner.png)
 
 GUI and CLI Launcher built on top of [Project Reboot](https://github.com/Milxnor/Project-Reboot-3.0/)
 
