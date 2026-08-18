@@ -78,7 +78,7 @@ class SettingsController extends GetxController {
           onPressed: () {
             infoBar.close();
             launchUrl(Uri.parse(
-                "https://github.com/YOUR_ORG/splasher/releases"));
+                "https://github.com/splasherproject/Splasher-project/releases"));
           },
         )
     );
@@ -87,7 +87,7 @@ class SettingsController extends GetxController {
   Future<dynamic> _getPubspecYaml() async {
     try {
       final pubspecResponse = await http.get(Uri.parse(
-          "https://raw.githubusercontent.com/YOUR_ORG/splasher/master/gui/pubspec.yaml"));
+          "https://raw.githubusercontent.com/splasherproject/Splasher-project/master/gui/pubspec.yaml"));
       if (pubspecResponse.statusCode != 200) {
         return null;
       }

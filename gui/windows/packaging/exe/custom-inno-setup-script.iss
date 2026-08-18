@@ -58,7 +58,7 @@ begin
         'If you are using another AntiVirus, it might be necessary to add an exclusion manually. ' +
         'This is necessary because DLL injection is often detected as a virus, but is necessary to modify Fortnite. ' +
         'This option was designed for advanced users who want to manually manage the exclusions list on their machine. ' +
-        'If you do not trust the Splasher, you can audit the source code at https://github.com/YOUR_ORG/splasher and build it from source.',
+        'If you do not trust the Splasher, you can audit the source code at https://github.com/splasherproject/Splasher-project and build it from source.',
         False,
         False
   );

@@ -2,9 +2,9 @@
 
 GUI and CLI Launcher built on top of [Project Reboot](https://github.com/Milxnor/Project-Reboot-3.0/)
 
-Join our Discord (TODO: add your invite link)
+Join our [Discord](https://discord.gg/Gu96DpVPG8)
 
-Install the launcher easily from the [releases](https://github.com/YOUR_ORG/splasher/releases/) section
+Install the launcher easily from the [releases](https://github.com/splasherproject/Splasher-project/releases/) section
 
 ## Modules
 

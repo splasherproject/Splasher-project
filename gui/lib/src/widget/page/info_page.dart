@@ -28,7 +28,7 @@ class InfoPage extends SplasherPage {
 }
 
 class _InfoPageState extends SplasherPageState<InfoPage> {
-  static const String _kReportBugUrl = "https://github.com/YOUR_ORG/splasher/issues/new";
+  static const String _kReportBugUrl = "https://github.com/splasherproject/Splasher-project/issues/new";
   static const String _kDiscordInviteUrl = "https://discord.gg/Gu96DpVPG8";
   
   @override

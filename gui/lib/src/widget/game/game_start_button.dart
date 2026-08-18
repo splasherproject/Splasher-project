@@ -470,7 +470,7 @@ class _LaunchButtonState extends State<LaunchButton> {
           severity: InfoBarSeverity.warning,
           duration: infoBarLongDuration,
           action: Button(
-            onPressed: () => launchUrlString("https://github.com/YOUR_ORG/splasher/blob/master/documentation/$currentLocale/PortForwarding.md"),
+            onPressed: () => launchUrlString("https://github.com/splasherproject/Splasher-project/blob/master/documentation/$currentLocale/PortForwarding.md"),
             child: Text(translations.checkGameServerFixAction),
           ),
         );
