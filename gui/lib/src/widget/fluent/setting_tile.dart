@@ -53,7 +53,7 @@ class SettingTileState extends State<SettingTile> {
                   states,
                   transparentWhenNone: true,
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(6.0))
+                borderRadius: BorderRadius.all(Radius.circular(14.0))
             ),
             child: _buildBody()
         ),
@@ -64,7 +64,7 @@ class SettingTileState extends State<SettingTile> {
   Card _buildBody() {
     return Card(
         borderRadius: const BorderRadius.all(
-            Radius.circular(6.0)
+            Radius.circular(14.0)
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.symmetric(

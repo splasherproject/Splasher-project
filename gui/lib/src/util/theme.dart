@@ -18,9 +18,58 @@ final AccentColor kSplasherAccentColor = AccentColor.swatch(_kSplasherAccentSwat
 /// Secondary brand color used for gradients/highlights across the UI.
 const Color kSplasherSecondaryColor = Color(0xFF7C4DFF);
 
-FluentThemeData buildSplasherTheme(Brightness brightness) => FluentThemeData(
-    brightness: brightness,
-    accentColor: kSplasherAccentColor,
-    visualDensity: VisualDensity.standard,
-    scaffoldBackgroundColor: Colors.transparent
+/// The font family used throughout the app, chosen to read close to macOS'
+/// system typeface (San Francisco) without relying on an Apple-only font.
+const String kSplasherFontFamily = 'Inter';
+
+const double _kPillRadius = 20.0;
+const BorderRadius _kCardRadius = BorderRadius.all(Radius.circular(16.0));
+
+final RoundedRectangleBorder _pillShape = RoundedRectangleBorder(
+  borderRadius: BorderRadius.circular(_kPillRadius),
 );
+
+FluentThemeData buildSplasherTheme(Brightness brightness) {
+  final isDark = brightness == Brightness.dark;
+
+  return FluentThemeData(
+      brightness: brightness,
+      accentColor: kSplasherAccentColor,
+      fontFamily: kSplasherFontFamily,
+      visualDensity: VisualDensity.standard,
+      scaffoldBackgroundColor: Colors.transparent,
+      cardColor: isDark ? const Color(0xFF172226) : const Color(0xFFFFFFFF),
+      navigationPaneTheme: NavigationPaneThemeData(
+        backgroundColor: isDark
+            ? const Color(0xF00E1A1D)
+            : const Color(0xF0F7FBFC),
+        highlightColor: kSplasherAccentColor,
+      ),
+      buttonTheme: ButtonThemeData(
+        defaultButtonStyle: ButtonStyle(
+          shape: WidgetStatePropertyAll(_pillShape),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+          ),
+        ),
+        filledButtonStyle: ButtonStyle(
+          shape: WidgetStatePropertyAll(_pillShape),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+          ),
+        ),
+        outlinedButtonStyle: ButtonStyle(
+          shape: WidgetStatePropertyAll(_pillShape),
+          padding: const WidgetStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+          ),
+        ),
+      ),
+      dialogTheme: ContentDialogThemeData(
+        decoration: BoxDecoration(
+          color: isDark ? const Color(0xFF1B2A2E) : Colors.white,
+          borderRadius: _kCardRadius,
+        ),
+      ),
+  );
+}
