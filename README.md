@@ -1,4 +1,4 @@
-<img src=".github/banner.png" alt="Splasher" width="360" align="left">
+<img src=".github/banner.png" alt="Splasher" width="560" align="left">
 <br clear="left">
 <br>
 
