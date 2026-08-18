@@ -34,7 +34,7 @@ class HostPage extends SplasherPage {
   String get name => translations.hostName;
 
   @override
-  String get iconAsset => "assets/images/host.png";
+  IconData get iconData => FluentIcons.people_24_regular;
 
   @override
   SplasherPageType get type => SplasherPageType.host;

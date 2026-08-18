@@ -24,7 +24,7 @@ class BrowsePage extends SplasherPage {
   SplasherPageType get type => SplasherPageType.browser;
 
   @override
-  String get iconAsset => "assets/images/server_browser.png";
+  IconData get iconData => fluentUiIcons.FluentIcons.search_24_regular;
 
   @override
   bool hasButton(String? pageName) => false;

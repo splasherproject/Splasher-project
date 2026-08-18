@@ -100,7 +100,7 @@ class DllController extends GetxController {
 
       if(!silent) {
         infoBarEntry = showSplasherInfoBar(
-            translations.downloadingDll("reboot"),
+            translations.downloadingDll("Splasher"),
             loading: true,
             duration: null
         );
@@ -117,7 +117,7 @@ class DllController extends GetxController {
       if(!result) {
         status.value = UpdateStatus.error;
         showSplasherInfoBar(
-            translations.downloadDllAntivirus(antiVirusName ?? defaultAntiVirusName, "reboot"),
+            translations.downloadDllAntivirus(antiVirusName ?? defaultAntiVirusName, "Splasher"),
             duration: infoBarLongDuration,
             severity: InfoBarSeverity.error
         );
@@ -129,7 +129,7 @@ class DllController extends GetxController {
       infoBarEntry?.close();
       if(!silent) {
         infoBarEntry = showSplasherInfoBar(
-            translations.downloadDllSuccess("reboot"),
+            translations.downloadDllSuccess("Splasher"),
             severity: InfoBarSeverity.success,
             duration: infoBarShortDuration
         );
@@ -144,7 +144,7 @@ class DllController extends GetxController {
       status.value = UpdateStatus.error;
       final completer = Completer<bool>();
       infoBarEntry = showSplasherInfoBar(
-          translations.downloadDllError(error.toString(), "reboot.dll"),
+          translations.downloadDllError(error.toString(), "Splasher"),
           duration: infoBarLongDuration,
           severity: InfoBarSeverity.error,
           onDismissed: () => completer.complete(false),

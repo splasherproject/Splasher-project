@@ -1,4 +1,5 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:get/get.dart';
 import 'package:splasher_common/common.dart';
 import 'package:splasher/src/controller/game_controller.dart';
@@ -49,10 +50,17 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                 Container(
                     width: 64,
                     height: 64,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: FluentTheme.of(context).accentColor.withAlpha(38)
                     ),
-                    child: Image.asset("assets/images/user.png")
+                    child: Icon(
+                        FluentIcons.person_24_filled,
+                        size: 28,
+                        color: FluentTheme.of(context).accentColor.defaultBrushFor(
+                            FluentTheme.of(context).brightness
+                        )
+                    )
                 ),
                 const SizedBox(
                   width: 12.0,
@@ -103,14 +111,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   String get _emailLabel {
     final username = _username.text;
     if(username.isEmpty) {
-      return "$kDefaultPlayerName@projectreboot.dev";
+      return "$kDefaultPlayerName@splasher.gg";
     }
 
     if(username.contains("@")) {
       return username.toLowerCase();
     }
 
-    return "$username@projectreboot.dev".toLowerCase();
+    return "$username@splasher.gg".toLowerCase();
   }
 
   TextEditingController get _username => pageIndex.value == SplasherPageType.host.index ? _hostingController.accountUsername : _gameController.username;

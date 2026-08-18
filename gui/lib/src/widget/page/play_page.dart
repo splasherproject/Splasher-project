@@ -27,7 +27,7 @@ class PlayPage extends SplasherPage {
   String get name => translations.playName;
 
   @override
-  String get iconAsset => "assets/images/play.png";
+  IconData get iconData => FluentIcons.play_circle_24_regular;
 
   @override
   SplasherPageType get type => SplasherPageType.play;

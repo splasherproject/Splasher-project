@@ -29,7 +29,7 @@ class SettingsPage extends SplasherPage {
   String get name => translations.settingsName;
 
   @override
-  String get iconAsset => "assets/images/settings.png";
+  IconData get iconData => FluentIcons.settings_24_regular;
 
   @override
   SplasherPageType get type => SplasherPageType.settings;

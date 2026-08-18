@@ -10,7 +10,7 @@ abstract class SplasherPage extends StatefulWidget {
 
   String get name;
 
-  String get iconAsset;
+  IconData get iconData;
 
   SplasherPageType get type;
 

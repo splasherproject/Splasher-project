@@ -202,7 +202,7 @@ Future<bool> _patch(File file, Uint8List original, Uint8List patched) async => I
 List<String> createRebootArgs(String username, String password, bool host, bool headless, bool logging, String additionalArgs) {
   log("[PROCESS] Generating reboot args");
   if(password.isEmpty) {
-    username = '${_parseUsername(username, host)}@projectreboot.dev';
+    username = '${_parseUsername(username, host)}@splasher.gg';
   }
 
   password = password.isNotEmpty ? password : "Rebooted";

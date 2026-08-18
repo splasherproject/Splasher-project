@@ -29,7 +29,7 @@ class BackendPage extends SplasherPage {
   String get name => translations.backendName;
 
   @override
-  String get iconAsset => "assets/images/backend.png";
+  IconData get iconData => FluentIcons.cloud_24_regular;
 
   @override
   SplasherPageType get type => SplasherPageType.backend;

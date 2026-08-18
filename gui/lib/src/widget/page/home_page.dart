@@ -495,32 +495,47 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
             pagesController.add(null);
           }
         },
-        builder: (context, states) => Obx(() => Container(
-          height: 36,
-          decoration: BoxDecoration(
-              color: ButtonThemeData.uncheckedInputColor(
-                FluentTheme.of(context),
-                pageIndex.value == index ? {WidgetState.hovered} : states,
-                transparentWhenNone: true,
+        builder: (context, states) {
+          final theme = FluentTheme.of(context);
+          return Obx(() {
+            final selected = pageIndex.value == index;
+            final foreground = selected ? theme.accentColor.defaultBrushFor(theme.brightness) : null;
+            return Container(
+              height: 36,
+              decoration: BoxDecoration(
+                  color: selected
+                      ? theme.accentColor.withAlpha(24)
+                      : ButtonThemeData.uncheckedInputColor(
+                          theme,
+                          states,
+                          transparentWhenNone: true,
+                        ),
+                  borderRadius: const BorderRadius.all(Radius.circular(18.0))
               ),
-              borderRadius: BorderRadius.all(Radius.circular(6.0))
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: 8.0
-            ),
-            child: Row(
-              children: [
-                SizedBox.square(
-                    dimension: 24,
-                    child: Image.asset(page.iconAsset)
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0
                 ),
-                const SizedBox(width: 12.0),
-                Text(page.name)
-              ],
-            ),
-          ),
-        )),
+                child: Row(
+                  children: [
+                    SizedBox.square(
+                        dimension: 24,
+                        child: Icon(page.iconData, size: 18, color: foreground)
+                    ),
+                    const SizedBox(width: 12.0),
+                    Text(
+                        page.name,
+                        style: TextStyle(
+                            color: foreground,
+                            fontWeight: selected ? FontWeight.w600 : FontWeight.normal
+                        )
+                    )
+                  ],
+                ),
+              ),
+            );
+          });
+        },
       ),
     );
   }
@@ -566,7 +581,7 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
   List<AutoSuggestBoxItem<PageSuggestion>> get _suggestedItems => pages.mapMany((page) {
     final pageIcon = SizedBox.square(
         dimension: 24,
-        child: Image.asset(page.iconAsset)
+        child: Icon(page.iconData, size: 18)
     );
     final results = <AutoSuggestBoxItem<PageSuggestion>>[];
     results.add(AutoSuggestBoxItem(

@@ -18,7 +18,7 @@ class InfoPage extends SplasherPage {
   String get name => translations.infoName;
 
   @override
-  String get iconAsset => "assets/images/info.png";
+  IconData get iconData => FluentIcons.info_24_regular;
 
   @override
   bool hasButton(String? routeName) => false;
