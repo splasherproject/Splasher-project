@@ -24,8 +24,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:version/version.dart';
 import 'package:window_manager/window_manager.dart';
 
-const double kDefaultWindowWidth = 1164;
-const double kDefaultWindowHeight = 864;
+const double kDefaultWindowWidth = 980;
+const double kDefaultWindowHeight = 680;
 const String kCustomUrlSchema = "Splasher";
 
 Version? appVersion;
@@ -155,7 +155,11 @@ Future<void> _initWindow() async {
     await windowManager.ensureInitialized();
     await Window.initialize();
     var settingsController = Get.find<SettingsController>();
-    var size = Size(settingsController.width, settingsController.height);
+    await windowManager.setMaximumSize(const Size(kDefaultWindowWidth, kDefaultWindowHeight));
+    var size = Size(
+        settingsController.width.clamp(0, kDefaultWindowWidth),
+        settingsController.height.clamp(0, kDefaultWindowHeight)
+    );
     await windowManager.setSize(size);
     var offsetX = settingsController.offsetX;
     var offsetY = settingsController.offsetY;
@@ -170,6 +174,7 @@ Future<void> _initWindow() async {
     }
     await windowManager.setPreventClose(true);
     await windowManager.setResizable(true);
+    await windowManager.setMaximizable(false);
     if(isWin11) {
       await Window.setEffect(
           effect: WindowEffect.acrylic,

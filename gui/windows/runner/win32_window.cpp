@@ -140,6 +140,18 @@ bool Win32Window::CreateAndShow(const std::wstring &title,
         return false;
     }
 
+#ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
+#define DWMWA_USE_IMMERSIVE_DARK_MODE 20
+#endif
+#ifndef DWMWA_CAPTION_COLOR
+#define DWMWA_CAPTION_COLOR 35
+#endif
+
+    BOOL dark_mode = TRUE;
+    DwmSetWindowAttribute(window, DWMWA_USE_IMMERSIVE_DARK_MODE, &dark_mode, sizeof(dark_mode));
+    COLORREF caption_color = RGB(0x0C, 0x0C, 0x0E);
+    DwmSetWindowAttribute(window, DWMWA_CAPTION_COLOR, &caption_color, sizeof(caption_color));
+
     return OnCreate();
 }
 

@@ -22,12 +22,12 @@ const Color kSplasherSecondaryColor = Color(0xFF7C4DFF);
 const String kSplasherFontFamily = 'Inter';
 
 const double _kPillRadius = 20.0;
-const BorderRadius _kCardRadius = BorderRadius.all(Radius.circular(16.0));
+const BorderRadius _kCardRadius = BorderRadius.all(Radius.circular(8.0));
 
 // Near-black gaming-launcher palette.
 const Color _kDarkBackground = Color(0xFF0C0C0E);
 const Color _kDarkCard = Color(0xFF18181C);
-const Color _kDarkBorder = Color(0xFF242429);
+const Color _kDarkBorder = Color(0xFF33333A);
 const Color _kLightBackground = Color(0xFFF5F6F7);
 const Color _kLightCard = Color(0xFFFFFFFF);
 
