@@ -20,9 +20,9 @@ const String kRebootAboveS20DownloadUrl =
     "https://github.com/splasherproject/Splasher-project/releases/download/dlls-v1.0/RebootS20.zip";
 
 const String _kRebootBelowS20FallbackDownloadUrl =
-    "https://github.com/splasherproject/Splasher-project/raw/master/gui/dependencies/dlls/RebootFallback.zip";
+    "https://github.com/splasherproject/Splasher-project/raw/master/gui/dependencies/dlls/SplasherFallback.zip";
 const String _kRebootAboveS20FallbackDownloadUrl =
-    "https://github.com/splasherproject/Splasher-project/raw/master/gui/dependencies/dlls/RebootS20Fallback.zip";
+    "https://github.com/splasherproject/Splasher-project/raw/master/gui/dependencies/dlls/SplasherS20Fallback.zip";
 
 const String kStopBuildDownloadSignal = "kill";
 
