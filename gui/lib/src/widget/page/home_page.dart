@@ -538,13 +538,13 @@ class _HomePageState extends State<HomePage> with WindowListener, AutomaticKeepA
         selectionHeightStyle: BoxHeightStyle.max,
         itemBuilder: (context, item) => ListTile(
             onPressed: () {
-              pageIndex.value = item.value.pageIndex;
+              pageIndex.value = item.value!.pageIndex;
               _searchController.clear();
               _searchFocusNode.unfocus();
             },
             leading: item.child,
             title: Text(
-                item.value.name,
+                item.value!.name,
                 overflow: TextOverflow.clip,
                 maxLines: 1
             )

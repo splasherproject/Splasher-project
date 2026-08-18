@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:async/async.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide FluentIcons;
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:flutter_gen/gen_l10n/splasher_localizations.dart';
+import 'package:splasher/l10n/splasher_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:get/get.dart';
 import 'package:splasher_common/common.dart';

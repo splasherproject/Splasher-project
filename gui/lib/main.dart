@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_acrylic/flutter_acrylic.dart';
-import 'package:flutter_gen/gen_l10n/splasher_localizations.dart';
+import 'package:splasher/l10n/splasher_localizations.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

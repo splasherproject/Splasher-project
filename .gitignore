@@ -1,0 +1,7 @@
+
+# Build artifacts (not source)
+**/.dart_tool/
+**/build/
+gui/dist/
+gui/lib/l10n/splasher_localizations.dart
+gui/lib/l10n/splasher_localizations_en.dart
