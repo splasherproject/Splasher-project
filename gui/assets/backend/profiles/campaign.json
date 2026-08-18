@@ -1,10 +1,10 @@
 {
-  "_id": "LawinServer",
+  "_id": "Splasher",
   "created": "0001-01-01T00:00:00.000Z",
   "updated": "0001-01-01T00:00:00.000Z",
   "rvn": 1,
   "wipeNumber": 1,
-  "accountId": "LawinServer",
+  "accountId": "Splasher",
   "profileId": "campaign",
   "version": "no_version",
   "items": {
@@ -212,7 +212,7 @@
         "use_count": 0,
         "banner_icon_template": "SurvivalBannerStonewoodComplete",
         "banner_color_template": "DefaultColor15",
-        "locker_name": "LawinServer",
+        "locker_name": "Splasher",
         "item_seen": false,
         "favorite": false
       },

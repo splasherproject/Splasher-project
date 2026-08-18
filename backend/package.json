@@ -1,5 +1,5 @@
 {
-  "name": "lawinserver",
+  "name": "splasher-server",
   "version": "1.0.0",
   "description": "A fortnite backend which supports both BR and STW for every single fortnite build.",
   "main": "index.js",

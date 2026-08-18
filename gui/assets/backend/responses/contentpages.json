@@ -9,7 +9,7 @@
       "_type": "CommonUI Simple Message",
       "message": {
         "_type": "CommonUI Simple Message Base",
-        "title": "LawinServer",
+        "title": "Splasher",
         "body": "Join our discord: https://discord.gg/KJ8UaHZ\nYouTube: Lawin\nTwitter: @lawin_010"
       }
     },
@@ -222,8 +222,8 @@
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "LawinServer",
-          "body": "Enjoy LawinServer!",
+          "title": "Splasher",
+          "body": "Enjoy Splasher!",
           "spotlight": false
         }
       ]
@@ -1392,7 +1392,7 @@
         {
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
-          "title": "LawinServer",
+          "title": "Splasher",
           "body": "Server created by Lawin (Twitter: @lawin_010)\nDiscord: https://discord.gg/KJ8UaHZ",
           "spotlight": true
         }
@@ -1417,7 +1417,7 @@
           "gamemodes": [],
           "hidden": false,
           "_type": "CommonUI Emergency Notice Base",
-          "title": "LawinServer",
+          "title": "Splasher",
           "body": "Server created by Lawin (Twitter: @lawin_010)\nDiscord: https://discord.gg/KJ8UaHZ"
         }
       ]
@@ -6126,21 +6126,21 @@
           "tileImage": "https://fortnite-public-service-prod11.ol.epicgames.com/images/motd-s.png",
           "videoMute": false,
           "hidden": false,
-          "tabTitleOverride": "LawinServer",
+          "tabTitleOverride": "Splasher",
           "_type": "CommonUI Simple Message MOTD",
           "title": {
-            "ar": "مرحبًا بك في LawinServer!",
-            "en": "Welcome to LawinServer!",
-            "de": "Willkommen bei LawinServer!",
-            "es": "¡Bienvenidos a LawinServer!",
-            "es-419": "¡Bienvenidos a LawinServer!",
-            "fr": "Bienvenue sur LawinServer !",
-            "it": "Benvenuto in LawinServer!",
-            "ja": "LawinServerへようこそ！",
-            "ko": "LawinServer에 오신 것을 환영합니다!",
-            "pl": "Witaj w LawinServerze!",
-            "pt-BR": "Bem-vindo ao LawinServer!",
-            "ru": "Добро пожаловать в LawinServer!",
+            "ar": "مرحبًا بك في Splasher!",
+            "en": "Welcome to Splasher!",
+            "de": "Willkommen bei Splasher!",
+            "es": "¡Bienvenidos a Splasher!",
+            "es-419": "¡Bienvenidos a Splasher!",
+            "fr": "Bienvenue sur Splasher !",
+            "it": "Benvenuto in Splasher!",
+            "ja": "Splasherへようこそ！",
+            "ko": "Splasher에 오신 것을 환영합니다!",
+            "pl": "Witaj w Splasherze!",
+            "pt-BR": "Bem-vindo ao Splasher!",
+            "ru": "Добро пожаловать в Splasher!",
             "tr": "LavinServer'a Hoş Geldiniz!"
           },
           "body": {
@@ -6185,8 +6185,8 @@
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "LawinServer",
-          "body": "Enjoy LawinServer!",
+          "title": "Splasher",
+          "body": "Enjoy Splasher!",
           "spotlight": false
         }
       ]
@@ -6209,21 +6209,21 @@
           "tileImage": "https://fortnite-public-service-prod11.ol.epicgames.com/images/motd-s.png",
           "videoMute": false,
           "hidden": false,
-          "tabTitleOverride": "LawinServer",
+          "tabTitleOverride": "Splasher",
           "_type": "CommonUI Simple Message MOTD",
           "title": {
-            "ar": "مرحبًا بك في LawinServer!",
-            "en": "Welcome to LawinServer!",
-            "de": "Willkommen bei LawinServer!",
-            "es": "¡Bienvenidos a LawinServer!",
-            "es-419": "¡Bienvenidos a LawinServer!",
-            "fr": "Bienvenue sur LawinServer !",
-            "it": "Benvenuto in LawinServer!",
-            "ja": "LawinServerへようこそ！",
-            "ko": "LawinServer에 오신 것을 환영합니다!",
-            "pl": "Witaj w LawinServerze!",
-            "pt-BR": "Bem-vindo ao LawinServer!",
-            "ru": "Добро пожаловать в LawinServer!",
+            "ar": "مرحبًا بك في Splasher!",
+            "en": "Welcome to Splasher!",
+            "de": "Willkommen bei Splasher!",
+            "es": "¡Bienvenidos a Splasher!",
+            "es-419": "¡Bienvenidos a Splasher!",
+            "fr": "Bienvenue sur Splasher !",
+            "it": "Benvenuto in Splasher!",
+            "ja": "Splasherへようこそ！",
+            "ko": "Splasher에 오신 것을 환영합니다!",
+            "pl": "Witaj w Splasherze!",
+            "pt-BR": "Bem-vindo ao Splasher!",
+            "ru": "Добро пожаловать в Splasher!",
             "tr": "LavinServer'a Hoş Geldiniz!"
           },
           "body": {
@@ -6305,8 +6305,8 @@
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "adspace": "ENJOY!",
-          "title": "LawinServer",
-          "body": "Enjoy LawinServer!",
+          "title": "Splasher",
+          "body": "Enjoy Splasher!",
           "spotlight": false
         }
       ]
@@ -6339,7 +6339,7 @@
           "bHidden": false,
           "sectionId": "Featured",
           "bShowTimer": true,
-          "sectionDisplayName": "LawinServer Item Shop",
+          "sectionDisplayName": "Splasher Item Shop",
           "bShowIneligibleOffers": true
         }
       ]

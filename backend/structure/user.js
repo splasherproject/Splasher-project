@@ -148,7 +148,7 @@ express.get("/account/api/oauth/verify", async (req, res) => {
 
 express.post("/account/api/oauth/token", async (req, res) => {
     if (config.Config.bUseConfigDisplayName == false) {
-        Memory_CurrentAccountID = req.body.username || "LawinServer"
+        Memory_CurrentAccountID = req.body.username || "Splasher"
     }
 
     if (Memory_CurrentAccountID.includes("@")) Memory_CurrentAccountID = Memory_CurrentAccountID.split("@")[0];

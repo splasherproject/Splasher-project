@@ -9,7 +9,7 @@ import 'package:shelf_proxy/shelf_proxy.dart';
 import 'package:sync/semaphore.dart';
 
 final Directory backendDirectory = Directory("${assetsDirectory.path}\\backend");
-final File backendStartExecutable = File("${backendDirectory.path}\\lawinserver.exe");
+final File backendStartExecutable = File("${backendDirectory.path}\\splasher-server.exe");
 final File matchmakerConfigFile = File("${backendDirectory.path}\\Config\\config.ini");
 final Semaphore _semaphore = Semaphore();
 String? _lastIp;

@@ -37,7 +37,7 @@ express.use(require("./structure/mcp.js"));
 
 const port = 3551;
 express.listen(port, () => {
-    console.log("LawinServer started listening on port", port);
+    console.log("Splasher started listening on port", port);
 
     require("./structure/xmpp.js");
 }).on("error", (err) => {
@@ -48,7 +48,7 @@ express.listen(port, () => {
 });
 
 try {
-    if (!fs.existsSync(path.join(process.env.LOCALAPPDATA, "LawinServer"))) fs.mkdirSync(path.join(process.env.LOCALAPPDATA, "LawinServer"));
+    if (!fs.existsSync(path.join(process.env.LOCALAPPDATA, "Splasher"))) fs.mkdirSync(path.join(process.env.LOCALAPPDATA, "Splasher"));
 } catch (err) {
     // fallback
     if (!fs.existsSync(path.join(__dirname, "ClientSettings"))) fs.mkdirSync(path.join(__dirname, "ClientSettings"));
@@ -56,7 +56,7 @@ try {
 
 // if endpoint not found, return this error
 express.use((req, res, next) => {
-    var XEpicErrorName = "errors.com.lawinserver.common.not_found";
+    var XEpicErrorName = "errors.com.splasher.common.not_found";
     var XEpicErrorCode = 1004;
 
     res.set({
