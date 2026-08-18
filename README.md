@@ -1,4 +1,7 @@
-![Splasher](.github/banner.png)
+<img src=".github/banner.png" alt="Splasher" width="360" align="left">
+<br clear="left">
+<br>
+
 
 GUI and CLI Launcher built on top of [Project Reboot](https://github.com/Milxnor/Project-Reboot-3.0/)
 
