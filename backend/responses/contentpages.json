@@ -10,7 +10,7 @@
       "message": {
         "_type": "CommonUI Simple Message Base",
         "title": "Splasher",
-        "body": "Join our discord: https://discord.gg/KJ8UaHZ\nYouTube: Lawin\nTwitter: @lawin_010"
+        "body": "Join our Discord: https://discord.gg/Gu96DpVPG8"
       }
     },
     "_activeDate": "2017-07-19T13:14:04.490Z",
@@ -214,7 +214,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "DISCORD!",
           "title": "Join our discord server!",
-          "body": "https://discord.gg/KJ8UaHZ",
+          "body": "https://discord.gg/Gu96DpVPG8",
           "spotlight": false
         },
         {
@@ -1393,7 +1393,7 @@
           "hidden": false,
           "_type": "CommonUI Simple Message Base",
           "title": "Splasher",
-          "body": "Server created by Lawin (Twitter: @lawin_010)\nDiscord: https://discord.gg/KJ8UaHZ",
+          "body": "Join our Discord: https://discord.gg/Gu96DpVPG8",
           "spotlight": true
         }
       ]
@@ -1418,7 +1418,7 @@
           "hidden": false,
           "_type": "CommonUI Emergency Notice Base",
           "title": "Splasher",
-          "body": "Server created by Lawin (Twitter: @lawin_010)\nDiscord: https://discord.gg/KJ8UaHZ"
+          "body": "Join our Discord: https://discord.gg/Gu96DpVPG8"
         }
       ]
     },
@@ -6163,7 +6163,7 @@
           "videoStreamingEnabled": false,
           "sortingPriority": 90,
           "websiteButtonText": "Discord",
-          "websiteURL": "https://discord.gg/KJ8UaHZ",
+          "websiteURL": "https://discord.gg/Gu96DpVPG8",
           "id": "61fb3dd8-f23d-45cc-9058-058ab223ba5c",
           "videoAutoplay": false,
           "videoFullscreen": false,
@@ -6177,7 +6177,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "DISCORD!",
           "title": "Join our discord server!",
-          "body": "https://discord.gg/KJ8UaHZ",
+          "body": "https://discord.gg/Gu96DpVPG8",
           "spotlight": false
         },
         {
@@ -6246,7 +6246,7 @@
           "videoStreamingEnabled": false,
           "sortingPriority": 90,
           "websiteButtonText": "Discord",
-          "websiteURL": "https://discord.gg/KJ8UaHZ",
+          "websiteURL": "https://discord.gg/Gu96DpVPG8",
           "id": "61fb3dd8-f23d-45cc-9058-058ab223ba5c",
           "videoAutoplay": false,
           "videoFullscreen": false,
@@ -6297,7 +6297,7 @@
           "_type": "CommonUI Simple Message Base",
           "adspace": "DISCORD!",
           "title": "Join our discord server!",
-          "body": "https://discord.gg/KJ8UaHZ",
+          "body": "https://discord.gg/Gu96DpVPG8",
           "spotlight": false
         },
         {
